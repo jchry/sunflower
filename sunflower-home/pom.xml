@@ -9,6 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>sunflower-home</artifactId>
+    <name>sunflower-home</name>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -18,4 +19,5 @@
             <version>${parent.version}</version>
         </dependency>
     </dependencies>
+    
 </project>

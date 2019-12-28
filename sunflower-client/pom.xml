@@ -10,6 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>sunflower-client</artifactId>
+    <name>sunflower-client</name>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -42,5 +43,5 @@
             <artifactId>javax.servlet-api</artifactId>
         </dependency>
     </dependencies>
-    
+
 </project>
