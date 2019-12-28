@@ -1,6 +1,6 @@
 #!/bin/bash
-cd /u01/projectCAR/service/passenger-proxy-api/
-project=passenger-proxy-api-1.0-SNAPSHOT.jar
+cd /u01/projectCAR/service/sunflower-server/
+project=sunflower-server-1.0.0.jar
 
 #kill -9
 pid=`ps -ef|grep ${project}|grep -v grep|awk '{print $2}'`

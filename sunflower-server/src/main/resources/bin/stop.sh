@@ -1,4 +1,4 @@
 #!/bin/bash
-cd /u01/projectCAR/service/passenger-proxy-api/
+cd /u01/projectCAR/service/sunflower-server/
 
-kill -9 `ps -ef|grep passenger-proxy-api-1.0-SNAPSHOT.jar|grep -v grep|awk '{print $2}'`
+kill -9 `ps -ef|grep sunflower-server-1.0.0.jar|grep -v grep|awk '{print $2}'`

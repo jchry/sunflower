@@ -1,8 +1,8 @@
 #!/bin/bash
 source /etc/profile
 
-cd /u01/projectCAR/service/sunflower-perf-collector/
-project=sunflower-perf-collector-1.0.0.jar
+cd /u01/projectCAR/service/sunflower-server/
+project=sunflower-server-1.0.0.jar
 
 #kill -9
 pid=`ps -ef|grep ${project}|grep -v grep|awk '{print $2}'`
