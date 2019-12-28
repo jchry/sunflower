@@ -15,9 +15,9 @@
     <dependencies>
         <dependency>
             <groupId>com.swordslotus</groupId>
-            <artifactId>sunflower-core</artifactId>
+            <artifactId>sunflower-server</artifactId>
             <version>${parent.version}</version>
         </dependency>
     </dependencies>
-    
+
 </project>
