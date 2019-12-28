@@ -1,4 +1,4 @@
-#公共属性
+# 公共属性
 spring:
   profiles:
-    active: test
+    active: dev
