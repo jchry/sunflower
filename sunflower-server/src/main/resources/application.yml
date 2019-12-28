@@ -1,0 +1,4 @@
+#公共属性
+spring:
+  profiles:
+    active: test

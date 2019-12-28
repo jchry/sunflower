@@ -1,0 +1,10 @@
+#配置中心
+config-manager:
+  appName: perf_test
+  mode: 0
+  baseFolder: '/u01/config/'
+  remoteCheckInterval: 10
+  remoteUrl: 'http://inside-cnodeprod.hqzhuanche.com/rpc/download'
+  remoteToken: lmp9q11m
+  connectTimeout: 1000
+  readTimeout: 1000
