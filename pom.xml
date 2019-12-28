@@ -31,19 +31,19 @@
 
     <dependencyManagement>
         <dependencies>
-            <!--lombok-->
+            <!-- lombok -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
             </dependency>
-            <!--guava-->
+            <!-- guava -->
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
             </dependency>
-            <!--slf4j-->
+            <!-- slf4j -->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
@@ -56,7 +56,7 @@
                 <version>${slf4j.version}</version>
                 <scope>provided</scope>
             </dependency>
-            <!--logback-->
+            <!-- logback -->
             <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
@@ -69,7 +69,7 @@
                 <version>${logback.version}</version>
                 <scope>provided</scope>
             </dependency>
-            <!--mysql connect driver-->
+            <!-- mysql connect driver -->
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
@@ -81,7 +81,7 @@
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
-            <!--spring-->
+            <!-- spring -->
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-core</artifactId>
