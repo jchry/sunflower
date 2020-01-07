@@ -1,4 +1,4 @@
-package com.hq.home;
+package com.jchry.core;
 
 public class AppTest {
 
