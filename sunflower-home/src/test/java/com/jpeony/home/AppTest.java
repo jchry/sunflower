@@ -1,4 +1,4 @@
-package com.jchry.home;
+package com.jpeony.home;
 
 public class AppTest {
 

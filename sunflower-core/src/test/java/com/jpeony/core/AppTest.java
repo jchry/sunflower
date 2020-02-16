@@ -1,4 +1,4 @@
-package com.jchry.server;
+package com.jpeony.core;
 
 public class AppTest {
 
