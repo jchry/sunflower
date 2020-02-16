@@ -13,6 +13,11 @@
     <packaging>jar</packaging>
 
     <dependencies>
+        <dependency>
+            <groupId>com.jpeony</groupId>
+            <artifactId>sunflower-core</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
 </project>
