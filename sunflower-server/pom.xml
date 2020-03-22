@@ -18,6 +18,11 @@
             <artifactId>sunflower-core</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.jpeony</groupId>
+            <artifactId>sunflower-alarm</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
 </project>

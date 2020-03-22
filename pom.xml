@@ -20,6 +20,7 @@
         <module>sunflower-server</module>
         <module>sunflower-client</module>
         <module>sunflower-home</module>
+        <module>sunflower-alarm</module>
     </modules>
 
     <properties>

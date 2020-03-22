@@ -8,16 +8,16 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>sunflower-home</artifactId>
-    <name>sunflower-home</name>
-    <packaging>jar</packaging>
+    <artifactId>sunflower-alarm</artifactId>
+    <version>1.0.0</version>
+    <name>sunflower-alarm</name>
 
     <dependencies>
         <dependency>
-            <groupId>com.jchry</groupId>
-            <artifactId>sunflower-core</artifactId>
-            <version>1.0.0</version>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
-
 </project>
