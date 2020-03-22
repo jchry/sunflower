@@ -1,6 +1,6 @@
 # sunflower简介
 
-Java应用程序非侵入式监控。
+Java应用程序零侵入监控。
 
 # sunflower模块说明
 
