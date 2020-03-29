@@ -8,6 +8,8 @@ Java应用程序零侵入监控。
 
 3）JVM监控；
 
+4）应用组件；
+
 # sunflower模块说明
 
 sunflower-client：客户端，负责监控数据上报；
