@@ -2,6 +2,12 @@
 
 Java应用程序零侵入监控。
 
+1）异常监控；
+
+2）性能监控；
+
+3）JVM监控；
+
 # sunflower模块说明
 
 sunflower-client：客户端，负责监控数据上报；
