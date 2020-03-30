@@ -1,4 +1,4 @@
-package com.jpeony;
+package com.jpeony.agent;
 
 import static org.junit.Assert.assertTrue;
 

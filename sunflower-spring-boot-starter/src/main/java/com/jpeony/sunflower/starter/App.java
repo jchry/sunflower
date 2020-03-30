@@ -1,4 +1,4 @@
-package com.jpeony;
+package com.jpeony.sunflower.starter;
 
 /**
  * Hello world!
