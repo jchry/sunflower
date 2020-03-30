@@ -2,21 +2,25 @@
 
 Java应用程序零侵入监控。
 
-1）异常监控；
+异常监控；
 
-2）性能监控；
+Http监控；
 
-3）JVM监控；
+JVM监控；
 
-4）JDBC；
+JDBC监控；
 
-5）Redis；
+Redis监控；
 
-......
+MongoDB监控；
+
+CPU监控；
 
 # sunflower模块说明
 
-sunflower-client：客户端，负责监控数据上报；
+sunflower-client：客户端（spring、spring-mvc项目），负责监控数据上报；
+
+sunflower-spring-boot-starter：客户端(spring-boot、spring-cloud项目)，负责监控数据上报；
 
 sunflower-server：服务端，负责监控数据的分析，报警，存储；
 
