@@ -16,6 +16,8 @@ MongoDB监控；
 
 CPU监控；
 
+分布式追踪；
+
 # sunflower模块说明
 
 sunflower-client：客户端（spring、spring-mvc项目），负责监控数据上报；
