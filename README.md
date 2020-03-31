@@ -16,7 +16,7 @@ MongoDB监控；
 
 CPU监控；
 
-分布式追踪；
+分布式链路追踪；
 
 # sunflower模块说明
 
