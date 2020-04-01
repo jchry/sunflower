@@ -10,21 +10,13 @@ JVM监控；
 
 JDBC监控；
 
-Redis监控；
-
-MongoDB监控；
-
 CPU监控；
 
 分布式链路追踪；
 
 # sunflower模块说明
 
-sunflower-client：客户端（spring、spring-mvc项目），负责监控数据上报；
-
-sunflower-spring-boot-starter：客户端(spring-boot、spring-cloud项目)，负责监控数据上报；
-
-sunflower-agent：客户端（在线诊断客户端），线上问题诊断agent；
+sunflower-agent：客户端（在线诊断客户端），负责监控数据上报；
 
 sunflower-server：服务端，负责监控数据的分析，报警，存储；
 
