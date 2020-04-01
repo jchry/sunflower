@@ -18,10 +18,8 @@
     <modules>
         <module>sunflower-core</module>
         <module>sunflower-server</module>
-        <module>sunflower-client</module>
         <module>sunflower-home</module>
         <module>sunflower-alarm</module>
-        <module>sunflower-spring-boot-starter</module>
         <module>sunflower-agent</module>
     </modules>
 
