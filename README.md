@@ -16,9 +16,9 @@ CPU监控；
 
 # sunflower模块说明
 
-sunflower-agent：客户端（在线诊断客户端），负责监控数据上报；
+sunflower-agent：客户端，负责监控数据上报；
 
-sunflower-server：服务端，负责监控数据的分析，报警，存储；
+sunflower-server：服务端，负责监控数据的分析，存储；
 
 sunflower-home：后台管理，负责配置，报表展示；
 
