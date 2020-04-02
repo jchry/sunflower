@@ -1,4 +1,4 @@
-package com.jpeony.agent;
+package com.jpeony.sunflower.agent;
 
 /**
  * Unit test for simple App.

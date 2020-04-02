@@ -14,9 +14,36 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.jpeony</groupId>
+            <groupId>com.jchry</groupId>
             <artifactId>sunflower-core</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Premain-Class>com.jpeony.sunflower.agent.AgentBootStrap</Premain-Class>
+                            <Agent-Class>com.jpeony.sunflower.agent.AgentBootStrap</Agent-Class>
+                            <Can-Redefine-Classes>true</Can-Redefine-Classes>
+                            <Can-Retransform-Classes>true</Can-Retransform-Classes>
+                            <Implementation-Title>${project.name}</Implementation-Title>
+                            <Implementation-Version>${project.version}</Implementation-Version>
+                            <Sunflower-Version>${project.version}</Sunflower-Version>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
