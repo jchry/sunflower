@@ -8,19 +8,14 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>sunflower-server</artifactId>
-    <name>sunflower-server</name>
+    <artifactId>sunflower-collector</artifactId>
+    <name>sunflower-collector</name>
     <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>com.jpeony</groupId>
             <artifactId>sunflower-core</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.jpeony</groupId>
-            <artifactId>sunflower-alarm</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>

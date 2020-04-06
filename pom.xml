@@ -17,8 +17,10 @@
 
     <modules>
         <module>sunflower-agent</module>
-        <module>sunflower-core</module>
+        <module>sunflower-plugins</module>
         <module>sunflower-collector</module>
+        <module>sunflower-core</module>
+        <module>sunflower-commons</module>
         <module>sunflower-home</module>
     </modules>
 
@@ -106,75 +108,5 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>2.1</version>
-                <configuration>
-                    <attach>true</attach>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <compilerVersion>${maven.compiler.source}</compilerVersion>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.source}</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
-        </plugins>
-        <resources>
-            <resource>
-                <directory>${project.basedir}/src/main/java</directory>
-                <excludes>
-                    <exclude>**/*.java</exclude>
-                </excludes>
-            </resource>
-            <resource>
-                <directory>${project.basedir}/src/main/resources</directory>
-                <filtering>true</filtering>
-                <excludes>
-                    <exclude>dev/*</exclude>
-                    <exclude>prod/*</exclude>
-                    <exclude>pre/*</exclude>
-                    <exclude>test/*</exclude>
-                </excludes>
-            </resource>
-            <resource>
-                <directory>${project.basedir}/src/main/resources/${profiles.active}</directory>
-            </resource>
-        </resources>
-        <testResources>
-            <testResource>
-                <directory>${project.basedir}/src/test/java</directory>
-                <excludes>
-                    <exclude>**/*.java</exclude>
-                </excludes>
-            </testResource>
-            <testResource>
-                <directory>${project.basedir}/src/test/resources</directory>
-                <filtering>true</filtering>
-                <excludes>
-                    <exclude>dev/*</exclude>
-                    <exclude>prod/*</exclude>
-                    <exclude>pre/*</exclude>
-                    <exclude>test/*</exclude>
-                </excludes>
-            </testResource>
-        </testResources>
-    </build>
 
 </project>

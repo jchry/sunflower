@@ -7,12 +7,12 @@ import java.lang.instrument.Instrumentation;
  */
 public class AgentBootStrap {
     /**
-     * jvm 参数形式启动，运行此方法
+     * jvm参数形式启动
      *
-     * @param agentArgs
+     * @param args
      * @param inst
      */
-    public static void premain(String agentArgs, Instrumentation inst) {
+    public static void premain(String args, Instrumentation inst) {
         System.out.println("premain");
     }
 }
