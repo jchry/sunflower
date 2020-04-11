@@ -15,8 +15,7 @@
 
     <modules>
         <module>sunflower-agent</module>
-        <module>bootstrap</module>
-        <module>bootstrap-core</module>
+        <module>agent-core</module>
         <module>bootstrap-plugins</module>
     </modules>
 </project>

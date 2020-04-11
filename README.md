@@ -20,9 +20,7 @@ CPU监控；
 
 sunflower-agent: agent入口；
 
-bootstrap: agent实现代码；
-
-bootstrap: 核心代码；
+agent-core: agent核心实现；
 
 bootstrap-plugins: 每种监控以插件方式实现；
 

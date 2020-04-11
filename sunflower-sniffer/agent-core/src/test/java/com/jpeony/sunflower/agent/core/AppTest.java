@@ -1,4 +1,4 @@
-package com.jpeony.sunflower.bootstrap;
+package com.jpeony.sunflower.agent.core;
 
 /**
  * Unit test for simple App.
