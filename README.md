@@ -16,14 +16,22 @@ CPU监控；
 
 # sunflower模块说明
 
-sunflower-agent：客户端，负责监控数据采集上报；
+## sunflower-sniffer：客户端，负责监控数据采集上报；
 
-sunflower-plugins：客户端每种监控采集实现；
+sunflower-agent: agent入口；
 
-sunflower-collector：服务端，负责监控数据存储；
+bootstrap: agent实现代码；
 
-sunflower-home：后台管理，负责配置、报表、监控等；
+bootstrap: 核心代码；
 
-sunflower-commons：客户端、服务端、后台管理公用实现；
+bootstrap-plugins: 每种监控以插件方式实现；
 
-sunflower-core：核心模块；
+## sunflower-collector：服务端，负责监控数据存储；
+
+collector-starter: 服务端启动；
+
+collector-core: 核心服务实现；
+
+## sunflower-home：后台管理，负责配置、报表、监控等；
+
+## sunflower-commons：客户端、服务端、后台管理公用实现；

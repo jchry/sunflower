@@ -16,10 +16,8 @@
     <version>1.0.0</version>
 
     <modules>
-        <module>sunflower-agent</module>
-        <module>sunflower-plugins</module>
+        <module>sunflower-sniffer</module>
         <module>sunflower-collector</module>
-        <module>sunflower-core</module>
         <module>sunflower-commons</module>
         <module>sunflower-home</module>
     </modules>
