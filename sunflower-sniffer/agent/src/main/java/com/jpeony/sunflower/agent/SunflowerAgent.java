@@ -8,11 +8,8 @@ import java.lang.instrument.Instrumentation;
 public class SunflowerAgent {
     /**
      * jvm参数形式启动
-     *
-     * @param args
-     * @param inst
      */
-    public static void premain(String args, Instrumentation inst) {
-        System.out.println("premain");
+    public static void premain(String agentArgs, Instrumentation instrumentation) {
+        
     }
 }

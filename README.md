@@ -1,6 +1,6 @@
 # sunflower简介
 
-Java应用零侵入监控。
+Java分布式系统监控、追踪、在线诊断。
 
 异常监控；
 
@@ -16,7 +16,9 @@ CPU监控；
 
 # sunflower模块说明
 
-## sunflower-sniffer：客户端，负责监控数据采集上报；
+## sunflower-sniffer
+
+客户端，负责监控数据采集上报；
 
 sunflower-agent: agent入口；
 
@@ -24,12 +26,18 @@ agent-core: agent核心实现；
 
 bootstrap-plugins: 每种监控以插件方式实现；
 
-## sunflower-collector：服务端，负责监控数据存储；
+## sunflower-collector
+
+服务端，负责监控数据存储；
 
 collector-starter: 服务端启动；
 
 collector-core: 核心服务实现；
 
-## sunflower-home：后台管理，负责配置、报表、监控等；
+## sunflower-home
 
-## sunflower-commons：客户端、服务端、后台管理公用实现；
+后台管理，负责配置、报表、监控等；
+
+## sunflower-commons
+
+客户端、服务端、后台管理公用实现；

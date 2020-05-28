@@ -14,7 +14,7 @@
     <name>sunflower-sniffer</name>
 
     <modules>
-        <module>sunflower-agent</module>
+        <module>agent</module>
         <module>agent-core</module>
         <module>bootstrap-plugins</module>
     </modules>
