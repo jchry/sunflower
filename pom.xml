@@ -18,8 +18,8 @@
     <modules>
         <module>sunflower-sniffer</module>
         <module>sunflower-collector</module>
-        <module>sunflower-commons</module>
         <module>sunflower-home</module>
+        <module>sunflower-commons</module>
     </modules>
 
     <properties>

@@ -5,12 +5,19 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>sunflower</artifactId>
+        <artifactId>sunflower-home</artifactId>
         <groupId>com.jpeony</groupId>
         <version>1.0.0</version>
     </parent>
-    <artifactId>sunflower-commons</artifactId>
-    <name>sunflower-commons</name>
+    <artifactId>home-starter</artifactId>
+    <version>1.0.0</version>
+    <name>home-starter</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -20,4 +27,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
 </project>

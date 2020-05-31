@@ -10,8 +10,13 @@
         <version>1.0.0</version>
     </parent>
     <artifactId>sunflower-home</artifactId>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <name>sunflower-home</name>
+
+    <modules>
+        <module>home-starter</module>
+        <module>home-core</module>
+    </modules>
 
     <dependencies>
         <dependency>

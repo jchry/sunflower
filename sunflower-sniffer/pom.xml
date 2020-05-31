@@ -18,4 +18,12 @@
         <module>agent-core</module>
         <module>bootstrap-plugins</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.jpeony</groupId>
+            <artifactId>sunflower-commons</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
 </project>

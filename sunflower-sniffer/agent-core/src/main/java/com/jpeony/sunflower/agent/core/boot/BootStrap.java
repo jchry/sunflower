@@ -1,4 +1,4 @@
-package com.jpeony.sunflower.agent.core.bootstrap;
+package com.jpeony.sunflower.agent.core.boot;
 
 /**
  * @author yihonglei
