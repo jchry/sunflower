@@ -22,11 +22,11 @@ Java分布式系统监控、追踪、在线诊断。
 
 负责监控数据采集上报；
 
-- sunflower-agent: agent入口
+- agent: agent入口
 
 - agent-core: agent核心实现
 
-- bootstrap-plugins: 每种监控以插件方式实现
+- sdk-plugins: 每种监控以插件方式实现
 
 ## sunflower-collector（服务端）
 

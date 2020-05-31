@@ -16,7 +16,7 @@
     <modules>
         <module>agent</module>
         <module>agent-core</module>
-        <module>bootstrap-plugins</module>
+        <module>sdk-plugins</module>
     </modules>
 
     <dependencies>
