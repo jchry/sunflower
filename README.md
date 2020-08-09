@@ -16,6 +16,8 @@ Java 分布式系统监控。
 
 - 报警
 
+- 中间件监控
+
 # 二、sunflower 模块说明
 
 ## sunflower-sniffer（客户端）
