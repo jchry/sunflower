@@ -20,28 +20,10 @@ Java 分布式系统监控。
 
 # 二、sunflower 模块说明
 
-## sunflower-sniffer（客户端）
+## sunflower-agent（客户端）
 
 负责监控数据采集上报；
 
-- agent: agent入口
+## sunflower-server（服务端）
 
-- agent-core: agent核心实现
-
-- sdk-plugins: 每种监控以插件方式实现
-
-## sunflower-collector（服务端）
-
-负责监控数据存储；
-
-- collector-starter: 服务端启动
-
-- collector-core: 核心服务实现
-
-## sunflower-home（后台管理）
-
-负责配置、报表、监控数据展示等；
-
-## sunflower-commons
-
-客户端、服务端、后台公共代码库；
+负责监控数据存储，展示；
