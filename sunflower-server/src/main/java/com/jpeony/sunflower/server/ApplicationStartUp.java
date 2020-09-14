@@ -15,22 +15,17 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import java.util.List;
 
 /**
- * 启动Web + NettyServer
+ * 启动SpringBoot和NettyServer
  *
  * @author yihonglei
  */
 @SpringBootApplication(scanBasePackages = "com.jpeony.*")
 public class ApplicationStartUp implements WebMvcConfigurer, CommandLineRunner {
-    /**
-     * 启动SpringBoot
-     */
+
     public static void main(String[] args) {
         SpringApplication.run(ApplicationStartUp.class, args);
     }
 
-    /**
-     * 启动NettyServer，用于跟agent通信，通过http通信太耗网络，太慢
-     */
     @Override
     public void run(String... args) throws Exception {
 
@@ -38,8 +33,6 @@ public class ApplicationStartUp implements WebMvcConfigurer, CommandLineRunner {
 
     /**
      * 不使用默认jackson框架解析json，重写configureMessageConverters，使用fastjson框架解析json
-     *
-     * @author yihonglei
      */
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
