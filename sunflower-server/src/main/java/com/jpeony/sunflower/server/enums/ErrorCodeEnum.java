@@ -3,8 +3,6 @@ package com.jpeony.sunflower.server.enums;
 import lombok.Getter;
 
 /**
- * 错误码
- *
  * @author yihonglei
  */
 public enum ErrorCodeEnum {

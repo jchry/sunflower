@@ -15,8 +15,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import java.util.List;
 
 /**
- * 启动SpringBoot和NettyServer
- *
  * @author yihonglei
  */
 @SpringBootApplication(scanBasePackages = "com.jpeony.*")
@@ -28,12 +26,9 @@ public class ApplicationStartUp implements WebMvcConfigurer, CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
+        
     }
 
-    /**
-     * 不使用默认jackson框架解析json，重写configureMessageConverters，使用fastjson框架解析json
-     */
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.removeIf(converter -> converter instanceof MappingJackson2HttpMessageConverter);

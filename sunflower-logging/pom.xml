@@ -9,21 +9,9 @@
         <artifactId>sunflower</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <artifactId>sunflower-agent</artifactId>
+    <artifactId>sunflower-logging</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
-        <dependency>
-            <groupId>com.jpeony.sunflower</groupId>
-            <artifactId>sunflower-common</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.jpeony.sunflower</groupId>
-            <artifactId>sunflower-logging</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.jpeony.sunflower</groupId>
-            <artifactId>sunflower-remoting</artifactId>
-        </dependency>
     </dependencies>
 </project>
