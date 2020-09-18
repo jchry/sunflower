@@ -17,13 +17,5 @@
             <groupId>com.jpeony.sunflower</groupId>
             <artifactId>sunflower-common</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.jpeony.sunflower</groupId>
-            <artifactId>sunflower-logging</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.jpeony.sunflower</groupId>
-            <artifactId>sunflower-remoting</artifactId>
-        </dependency>
     </dependencies>
 </project>
