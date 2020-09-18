@@ -39,3 +39,15 @@ Java 分布式系统监控。
 ## sunflower-server（服务端）
 
 负责监控数据存储、展示、配置等；
+
+## sunflower-common（公共包）
+
+公共工具代码包；
+
+## sunflower-remoting（远程通信）
+
+基于Netty实现远程通信；
+
+## sunflower-logging（日志）
+
+内部日志；
