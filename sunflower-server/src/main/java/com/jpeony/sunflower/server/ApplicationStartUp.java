@@ -4,6 +4,9 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.google.common.collect.Lists;
+import com.jpeony.sunflower.remoting.RemotingServer;
+import com.jpeony.sunflower.remoting.netty.NettyRemotingServer;
+import com.jpeony.sunflower.remoting.netty.NettyServerConfig;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,7 +29,9 @@ public class ApplicationStartUp implements WebMvcConfigurer, CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        
+        NettyServerConfig nettyServerConfig = new NettyServerConfig();
+        RemotingServer remotingServer = new NettyRemotingServer(nettyServerConfig);
+        remotingServer.start();
     }
 
     @Override

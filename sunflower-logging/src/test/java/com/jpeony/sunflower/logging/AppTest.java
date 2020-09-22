@@ -1,4 +1,4 @@
-package com.jpeony.sunflower;
+package com.jpeony.sunflower.logging;
 
 import static org.junit.Assert.assertTrue;
 

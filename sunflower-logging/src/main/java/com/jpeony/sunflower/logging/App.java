@@ -1,4 +1,4 @@
-package com.jpeony.sunflower;
+package com.jpeony.sunflower.logging;
 
 /**
  * Hello world!
