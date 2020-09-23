@@ -34,6 +34,8 @@ Java 分布式系统监控。
 
 - 监控告警(钉钉推送)
 
+- 自定义监控
+
 # 二、sunflower 模块说明
 
 ## sunflower-agent（客户端）
@@ -42,7 +44,7 @@ Java 分布式系统监控。
 
 ## sunflower-server（服务端）
 
-负责监控数据存储、展示、配置等；
+负责监控数据处理、存储、展示、配置等；
 
 ## sunflower-common（公共包）
 
@@ -50,7 +52,7 @@ Java 分布式系统监控。
 
 ## sunflower-remoting（远程通信）
 
-基于Netty实现远程通信；
+基于Netty实现远程通信协议；
 
 ## sunflower-logging（日志）
 
