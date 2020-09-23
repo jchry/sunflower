@@ -46,10 +46,6 @@ Java 分布式系统监控。
 
 负责监控数据处理、存储、展示、配置等；
 
-## sunflower-common（公共包）
-
-公共工具代码包；
-
 ## sunflower-remoting（远程通信）
 
 基于Netty实现远程通信协议；
@@ -57,3 +53,7 @@ Java 分布式系统监控。
 ## sunflower-logging（日志）
 
 内部日志；
+
+## sunflower-common（公共包）
+
+公共工具代码包；
