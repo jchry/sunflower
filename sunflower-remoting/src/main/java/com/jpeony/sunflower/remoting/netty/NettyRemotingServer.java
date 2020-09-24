@@ -11,8 +11,6 @@ import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.timeout.IdleState;
-import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.handler.timeout.IdleStateHandler;
 import io.netty.util.concurrent.DefaultEventExecutorGroup;
 
@@ -39,7 +37,6 @@ public class NettyRemotingServer extends AbstractNettyRemoting implements Remoti
     private NettyDecoder decoder;
     private NettyConnectManageHandler connectionManageHandler;
     private NettyServerHandler serverHandler;
-    private IdleStateHandler idleStateHandler;
 
     public NettyRemotingServer(NettyServerConfig nettyServerConfig) {
         super(nettyServerConfig.getServerAsyncSemaphoreValue());
@@ -114,7 +111,6 @@ public class NettyRemotingServer extends AbstractNettyRemoting implements Remoti
                                         .addLast(defaultEventExecutorGroup,
                                                 encoder,
                                                 decoder,
-                                                idleStateHandler,
                                                 connectionManageHandler,
                                                 serverHandler
                                         );
@@ -176,7 +172,6 @@ public class NettyRemotingServer extends AbstractNettyRemoting implements Remoti
         decoder = new NettyDecoder();
         connectionManageHandler = new NettyConnectManageHandler();
         serverHandler = new NettyServerHandler();
-        idleStateHandler = new IdleStateHandler(0, 0, nettyServerConfig.getServerChannelMaxIdleTimeSeconds());
     }
 
     @ChannelHandler.Sharable
@@ -217,20 +212,6 @@ public class NettyRemotingServer extends AbstractNettyRemoting implements Remoti
             final String remoteAddress = RemotingHelper.parseChannelRemoteAddr(ctx.channel());
             System.out.println("NETTY SERVER PIPELINE: NettyConnectManageHandler-channelInactive, the channel " + remoteAddress);
             super.channelInactive(ctx);
-        }
-
-        @Override
-        public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
-            if (evt instanceof IdleStateEvent) {
-                IdleStateEvent event = (IdleStateEvent) evt;
-                if (event.state().equals(IdleState.ALL_IDLE)) {
-                    final String remoteAddress = RemotingHelper.parseChannelRemoteAddr(ctx.channel());
-                    System.out.println("NETTY SERVER PIPELINE: IDLE exception " + remoteAddress);
-                    RemotingUtil.closeChannel(ctx.channel());
-                }
-            }
-
-            ctx.fireUserEventTriggered(evt);
         }
 
         @Override

@@ -14,9 +14,6 @@ import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.timeout.IdleState;
-import io.netty.handler.timeout.IdleStateEvent;
-import io.netty.handler.timeout.IdleStateHandler;
 import io.netty.util.concurrent.DefaultEventExecutorGroup;
 
 import java.net.SocketAddress;
@@ -47,7 +44,6 @@ public class NettyRemotingClient extends AbstractNettyRemoting implements Remoti
     private NettyDecoder decoder;
     private NettyConnectManageHandler connectionManageHandler;
     private NettyClientHandler clientHandler;
-    private IdleStateHandler idleStateHandler;
 
     public NettyRemotingClient(final NettyClientConfig nettyClientConfig) {
         super(nettyClientConfig.getClientAsyncSemaphoreValue());
@@ -107,7 +103,6 @@ public class NettyRemotingClient extends AbstractNettyRemoting implements Remoti
                                 defaultEventExecutorGroup,
                                 encoder,
                                 decoder,
-                                idleStateHandler,
                                 connectionManageHandler,
                                 clientHandler);
                     }
@@ -354,7 +349,6 @@ public class NettyRemotingClient extends AbstractNettyRemoting implements Remoti
         decoder = new NettyDecoder();
         connectionManageHandler = new NettyConnectManageHandler();
         clientHandler = new NettyClientHandler();
-        idleStateHandler = new IdleStateHandler(0, 0, nettyClientConfig.getClientChannelMaxIdleTimeSeconds());
     }
 
     static class ChannelWrapper {
@@ -415,20 +409,6 @@ public class NettyRemotingClient extends AbstractNettyRemoting implements Remoti
             System.out.println("NETTY CLIENT PIPELINE: CLOSE " + remoteAddress);
             closeChannel(ctx.channel());
             super.close(ctx, promise);
-        }
-
-        @Override
-        public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
-            if (evt instanceof IdleStateEvent) {
-                IdleStateEvent event = (IdleStateEvent) evt;
-                if (event.state().equals(IdleState.ALL_IDLE)) {
-                    final String remoteAddress = RemotingHelper.parseChannelRemoteAddr(ctx.channel());
-                    System.out.println("NETTY CLIENT PIPELINE: IDLE exception " + remoteAddress);
-                    closeChannel(ctx.channel());
-                }
-            }
-
-            ctx.fireUserEventTriggered(evt);
         }
 
         @Override
