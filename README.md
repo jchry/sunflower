@@ -48,7 +48,7 @@ Java 分布式系统监控。
 
 ## sunflower-remoting（远程通信）
 
-基于Netty实现远程通信协议；
+基于Netty实现基础通信组件；
 
 ## sunflower-logging（日志）
 
