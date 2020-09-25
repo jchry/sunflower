@@ -11,7 +11,6 @@ import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.timeout.IdleStateHandler;
 import io.netty.util.concurrent.DefaultEventExecutorGroup;
 
 import java.net.InetSocketAddress;
@@ -141,7 +140,7 @@ public class NettyRemotingServer extends AbstractNettyRemoting implements Remoti
 
     @Override
     public void registerDefaultProcessor(NettyRequestProcessor processor, ExecutorService executor) {
-        this.defaultRequestProcessor = new Pair<>(processor, executor);
+        this.defaultRequestProcessor = new Pair<NettyRequestProcessor, ExecutorService>(processor, executor);
     }
 
     @Override
