@@ -16,6 +16,7 @@
         <module>sunflower-remoting</module>
         <module>sunflower-logging</module>
         <module>sunflower-common</module>
+        <module>sunflower-examples</module>
     </modules>
 
     <properties>
