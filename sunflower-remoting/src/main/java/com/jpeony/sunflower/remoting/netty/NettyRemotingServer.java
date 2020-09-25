@@ -33,7 +33,6 @@ public class NettyRemotingServer extends AbstractNettyRemoting implements Remoti
     private DefaultEventExecutorGroup defaultEventExecutorGroup;
 
     private NettyEncoder encoder;
-    private NettyDecoder decoder;
     private NettyConnectManageHandler connectionManageHandler;
     private NettyServerHandler serverHandler;
 
@@ -109,7 +108,7 @@ public class NettyRemotingServer extends AbstractNettyRemoting implements Remoti
                                 ch.pipeline()
                                         .addLast(defaultEventExecutorGroup,
                                                 encoder,
-                                                decoder,
+                                                new NettyDecoder(),
                                                 connectionManageHandler,
                                                 serverHandler
                                         );
@@ -168,7 +167,6 @@ public class NettyRemotingServer extends AbstractNettyRemoting implements Remoti
 
     private void prepareHandlers() {
         encoder = new NettyEncoder();
-        decoder = new NettyDecoder();
         connectionManageHandler = new NettyConnectManageHandler();
         serverHandler = new NettyServerHandler();
     }

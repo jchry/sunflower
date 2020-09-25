@@ -40,11 +40,6 @@ public class NettyRemotingClient extends AbstractNettyRemoting implements Remoti
 
     private DefaultEventExecutorGroup defaultEventExecutorGroup;
 
-    private NettyEncoder encoder;
-    private NettyDecoder decoder;
-    private NettyConnectManageHandler connectionManageHandler;
-    private NettyClientHandler clientHandler;
-
     public NettyRemotingClient(final NettyClientConfig nettyClientConfig) {
         super(nettyClientConfig.getClientAsyncSemaphoreValue());
         bootstrap = new Bootstrap();
@@ -88,8 +83,6 @@ public class NettyRemotingClient extends AbstractNettyRemoting implements Remoti
                     }
                 });
 
-        prepareHandlers();
-
         this.bootstrap.group(this.eventLoopGroupWorker).channel(NioSocketChannel.class)
                 .option(ChannelOption.TCP_NODELAY, true)
                 .option(ChannelOption.SO_KEEPALIVE, false)
@@ -101,10 +94,10 @@ public class NettyRemotingClient extends AbstractNettyRemoting implements Remoti
                     public void initChannel(SocketChannel ch) throws Exception {
                         ch.pipeline().addLast(
                                 defaultEventExecutorGroup,
-                                encoder,
-                                decoder,
-                                connectionManageHandler,
-                                clientHandler);
+                                new NettyEncoder(),
+                                new NettyDecoder(),
+                                new NettyConnectManageHandler(),
+                                new NettyClientHandler());
                     }
                 });
     }
@@ -341,13 +334,6 @@ public class NettyRemotingClient extends AbstractNettyRemoting implements Remoti
         } catch (InterruptedException e) {
 
         }
-    }
-
-    private void prepareHandlers() {
-        encoder = new NettyEncoder();
-        decoder = new NettyDecoder();
-        connectionManageHandler = new NettyConnectManageHandler();
-        clientHandler = new NettyClientHandler();
     }
 
     static class ChannelWrapper {
