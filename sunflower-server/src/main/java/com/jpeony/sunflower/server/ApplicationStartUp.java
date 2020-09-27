@@ -4,11 +4,13 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.google.common.collect.Lists;
+import com.jpeony.sunflower.common.protocol.RequestCode;
 import com.jpeony.sunflower.remoting.RemotingServer;
 import com.jpeony.sunflower.remoting.netty.AsyncNettyRequestProcessor;
 import com.jpeony.sunflower.remoting.netty.NettyRemotingServer;
 import com.jpeony.sunflower.remoting.netty.NettyServerConfig;
 import com.jpeony.sunflower.remoting.protocol.RemotingCommand;
+import com.jpeony.sunflower.server.processor.*;
 import io.netty.channel.ChannelHandlerContext;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -35,19 +37,17 @@ public class ApplicationStartUp implements WebMvcConfigurer, CommandLineRunner {
     public void run(String... args) throws Exception {
         NettyServerConfig nettyServerConfig = new NettyServerConfig();
         RemotingServer remotingServer = new NettyRemotingServer(nettyServerConfig);
-        remotingServer.registerProcessor(0, new AsyncNettyRequestProcessor() {
-            @Override
-            public void processRequest(ChannelHandlerContext ctx, RemotingCommand request) {
-                request.setRemark("Hi " + ctx.channel().remoteAddress());
-                System.out.println("服务端收到消息, remark=" + request.getRemark());
-            }
-
-            @Override
-            public boolean rejectRequest() {
-                return false;
-            }
-        }, Executors.newCachedThreadPool());
         
+        remotingServer.registerProcessor(RequestCode.SEND_ERROR_MONITOR_MESSAGE, new ErrorProcessor(), null);
+        remotingServer.registerProcessor(RequestCode.SEND_JVM_MONITOR_MESSAGE, new JVMProcessor(), null);
+        remotingServer.registerProcessor(RequestCode.SEND_HTTP_MONITOR_MESSAGE, new HttpProcessor(), null);
+        remotingServer.registerProcessor(RequestCode.SEND_MYSQL_MONITOR_MESSAGE, new MySqlProcessor(), null);
+        remotingServer.registerProcessor(RequestCode.SEND_REDIS_MONITOR_MESSAGE, new RedisProcessor(), null);
+        remotingServer.registerProcessor(RequestCode.SEND_MONGODB_MONITOR_MESSAGE, new MongodbProcessor(), null);
+        remotingServer.registerProcessor(RequestCode.SEND_ES_MONITOR_MESSAGE, new ESProcessor(), null);
+        remotingServer.registerProcessor(RequestCode.SEND_CPU_MONITOR_MESSAGE, new CPUProcessor(), null);
+        remotingServer.registerProcessor(RequestCode.SEND_IO_MONITOR_MESSAGE, new IOProcessor(), null);
+
         remotingServer.start();
     }
 
