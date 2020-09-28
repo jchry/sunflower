@@ -37,7 +37,7 @@ public class ApplicationStartUp implements WebMvcConfigurer, CommandLineRunner {
     public void run(String... args) throws Exception {
         NettyServerConfig nettyServerConfig = new NettyServerConfig();
         RemotingServer remotingServer = new NettyRemotingServer(nettyServerConfig);
-        
+
         remotingServer.registerProcessor(RequestCode.SEND_ERROR_MONITOR_MESSAGE, new ErrorProcessor(), null);
         remotingServer.registerProcessor(RequestCode.SEND_JVM_MONITOR_MESSAGE, new JVMProcessor(), null);
         remotingServer.registerProcessor(RequestCode.SEND_HTTP_MONITOR_MESSAGE, new HttpProcessor(), null);
