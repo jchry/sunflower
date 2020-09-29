@@ -6,12 +6,9 @@ import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.google.common.collect.Lists;
 import com.jpeony.sunflower.common.protocol.RequestCode;
 import com.jpeony.sunflower.remoting.RemotingServer;
-import com.jpeony.sunflower.remoting.netty.AsyncNettyRequestProcessor;
 import com.jpeony.sunflower.remoting.netty.NettyRemotingServer;
 import com.jpeony.sunflower.remoting.netty.NettyServerConfig;
-import com.jpeony.sunflower.remoting.protocol.RemotingCommand;
 import com.jpeony.sunflower.server.processor.*;
-import io.netty.channel.ChannelHandlerContext;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,7 +18,6 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
-import java.util.concurrent.Executors;
 
 /**
  * @author yihonglei
