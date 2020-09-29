@@ -58,6 +58,6 @@ Java 分布式系统监控。
 
 公共工具代码包；
 
-## sunflower-examplse（测试代码）
+## sunflower-examples（测试代码）
 
 agent应用、通信等测试demo；
