@@ -9,6 +9,7 @@ import com.jpeony.sunflower.remoting.RemotingServer;
 import com.jpeony.sunflower.remoting.netty.NettyRemotingServer;
 import com.jpeony.sunflower.remoting.netty.NettyServerConfig;
 import com.jpeony.sunflower.server.processor.*;
+import com.jpeony.sunflower.server.remoting.RemotingServerManager;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -31,20 +32,16 @@ public class ApplicationStartUp implements WebMvcConfigurer, CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        NettyServerConfig nettyServerConfig = new NettyServerConfig();
-        RemotingServer remotingServer = new NettyRemotingServer(nettyServerConfig);
+        RemotingServerManager serverManager = new RemotingServerManager();
 
-        remotingServer.registerProcessor(RequestCode.SEND_ERROR_MONITOR_MESSAGE, new ErrorProcessor(), null);
-        remotingServer.registerProcessor(RequestCode.SEND_JVM_MONITOR_MESSAGE, new JVMProcessor(), null);
-        remotingServer.registerProcessor(RequestCode.SEND_HTTP_MONITOR_MESSAGE, new HttpProcessor(), null);
-        remotingServer.registerProcessor(RequestCode.SEND_MYSQL_MONITOR_MESSAGE, new MySqlProcessor(), null);
-        remotingServer.registerProcessor(RequestCode.SEND_REDIS_MONITOR_MESSAGE, new RedisProcessor(), null);
-        remotingServer.registerProcessor(RequestCode.SEND_MONGODB_MONITOR_MESSAGE, new MongodbProcessor(), null);
-        remotingServer.registerProcessor(RequestCode.SEND_ES_MONITOR_MESSAGE, new ESProcessor(), null);
-        remotingServer.registerProcessor(RequestCode.SEND_CPU_MONITOR_MESSAGE, new CPUProcessor(), null);
-        remotingServer.registerProcessor(RequestCode.SEND_IO_MONITOR_MESSAGE, new IOProcessor(), null);
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            @Override
+            public void run() {
+                serverManager.shutdown();
+            }
+        }));
 
-        remotingServer.start();
+        serverManager.start();
     }
 
     @Override
