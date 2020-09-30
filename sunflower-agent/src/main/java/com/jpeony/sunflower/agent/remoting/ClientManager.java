@@ -1,5 +1,7 @@
 package com.jpeony.sunflower.agent.remoting;
 
+import com.jpeony.sunflower.remoting.common.RemotingUtil;
+
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -19,8 +21,8 @@ public class ClientManager {
         return instance;
     }
 
-    public ClientInstance getOrCreateClientInstance(final ClientConfig clientConfig) {
-        String clientId = clientConfig.buildClientIP();
+    public ClientInstance getOrCreateClientInstance() {
+        String clientId = this.buildClientIP();
         ClientInstance instance = this.factoryTable.get(clientId);
         if (null == instance) {
             instance = new ClientInstance();
@@ -30,5 +32,18 @@ public class ClientManager {
             }
         }
         return instance;
+    }
+
+    public String buildClientIP() {
+        String clientIP = RemotingUtil.getLocalAddress();
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(clientIP);
+
+        sb.append("@");
+
+        // TODO cluster split
+
+        return sb.toString();
     }
 }
