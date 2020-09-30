@@ -11,14 +11,16 @@ import com.jpeony.sunflower.remoting.protocol.RemotingCommand;
  */
 public class AgentStartup {
     public static void main(String[] args) {
-        // Start client
+        // ClientInstance
         ClientManager clientManager = ClientManager.getInstance();
         ClientConfig clientConfig = new ClientConfig();
         ClientInstance clientInstance = clientManager.getOrCreateClientInstance(clientConfig);
-        clientInstance.start();
 
         // Shutdown client
         Runtime.getRuntime().addShutdownHook(new Thread(clientInstance::shutdown));
+
+        // Start client
+        clientInstance.start();
 
         // sendMessage-test
         RemotingCommand request = RemotingCommand.createRequestCommand(RequestCode.SEND_ERROR_MONITOR_MESSAGE);
