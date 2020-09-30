@@ -9,7 +9,7 @@ import com.jpeony.sunflower.remoting.protocol.RemotingCommand;
 /**
  * @author yihonglei
  */
-public class AgentBootStrap {
+public class AgentStartup {
     public static void main(String[] args) {
         // Start client
         ClientManager clientManager = ClientManager.getInstance();
