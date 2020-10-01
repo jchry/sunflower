@@ -1,7 +1,7 @@
 package com.jpeony.sunflower.agent.startup;
 
-import com.jpeony.sunflower.agent.remoting.ClientInstance;
-import com.jpeony.sunflower.agent.remoting.ClientManager;
+import com.jpeony.sunflower.agent.remoting.RemotingClientInstance;
+import com.jpeony.sunflower.agent.remoting.RemotingClientManager;
 import com.jpeony.sunflower.common.protocol.RequestCode;
 import com.jpeony.sunflower.remoting.protocol.RemotingCommand;
 
@@ -11,17 +11,17 @@ import com.jpeony.sunflower.remoting.protocol.RemotingCommand;
 public class AgentStartup {
     public static void main(String[] args) {
         // ClientInstance
-        ClientInstance clientInstance = ClientManager.getInstance().getOrCreateClientInstance();
+        RemotingClientInstance remotingClientInstance = RemotingClientManager.getInstance().getOrCreateClientInstance();
 
         // Shutdown client
-        Runtime.getRuntime().addShutdownHook(new Thread(clientInstance::shutdown));
+        Runtime.getRuntime().addShutdownHook(new Thread(remotingClientInstance::shutdown));
 
         // Start client
-        clientInstance.start();
+        remotingClientInstance.start();
 
         // sendMessage-test
         RemotingCommand request = RemotingCommand.createRequestCommand(RequestCode.SEND_ERROR_MONITOR_MESSAGE);
         request.setRemark("send message agent");
-        clientInstance.getClientAPIImpl().sendMessage("localhost:9999", request, 1000 * 3);
+        remotingClientInstance.getRemotingClientAPIImpl().sendMessage("localhost:9999", request, 1000 * 3);
     }
 }

@@ -8,25 +8,25 @@ import java.util.concurrent.ConcurrentMap;
 /**
  * @author yihonglei
  */
-public class ClientManager {
-    private static ClientManager instance = new ClientManager();
-    private ConcurrentMap<String/* clientId */, ClientInstance> factoryTable =
-            new ConcurrentHashMap<String, ClientInstance>();
+public class RemotingClientManager {
+    private static RemotingClientManager instance = new RemotingClientManager();
+    private ConcurrentMap<String/* clientId */, RemotingClientInstance> factoryTable =
+            new ConcurrentHashMap<String, RemotingClientInstance>();
 
-    private ClientManager() {
+    private RemotingClientManager() {
 
     }
 
-    public static ClientManager getInstance() {
+    public static RemotingClientManager getInstance() {
         return instance;
     }
 
-    public ClientInstance getOrCreateClientInstance() {
+    public RemotingClientInstance getOrCreateClientInstance() {
         String clientId = this.buildClientIP();
-        ClientInstance instance = this.factoryTable.get(clientId);
+        RemotingClientInstance instance = this.factoryTable.get(clientId);
         if (null == instance) {
-            instance = new ClientInstance();
-            ClientInstance prev = this.factoryTable.putIfAbsent(clientId, instance);
+            instance = new RemotingClientInstance();
+            RemotingClientInstance prev = this.factoryTable.putIfAbsent(clientId, instance);
             if (prev != null) {
                 instance = prev;
             }

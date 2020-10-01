@@ -6,14 +6,14 @@ import com.jpeony.sunflower.remoting.netty.NettyClientConfig;
 /**
  * @author yihonglei
  */
-public class ClientInstance {
+public class RemotingClientInstance {
     private final NettyClientConfig nettyClientConfig;
-    private final ClientAPIImpl clientAPIImpl;
+    private final RemotingClientAPIImpl remotingClientAPIImpl;
     private ServiceState serviceState = ServiceState.CREATE_JUST;
 
-    public ClientInstance() {
+    public RemotingClientInstance() {
         this.nettyClientConfig = new NettyClientConfig();
-        this.clientAPIImpl = new ClientAPIImpl(nettyClientConfig);
+        this.remotingClientAPIImpl = new RemotingClientAPIImpl(nettyClientConfig);
     }
 
     public void start() {
@@ -22,7 +22,7 @@ public class ClientInstance {
             switch (this.serviceState) {
                 case CREATE_JUST:
                     // Start request channel
-                    this.clientAPIImpl.start();
+                    this.remotingClientAPIImpl.start();
                     serviceState = ServiceState.RUNNING;
                     break;
                 case START_FAILED:
@@ -42,7 +42,7 @@ public class ClientInstance {
                     break;
                 case RUNNING:
                     this.serviceState = ServiceState.SHUTDOWN_ALREADY;
-                    this.clientAPIImpl.shutdown();
+                    this.remotingClientAPIImpl.shutdown();
                     break;
                 case SHUTDOWN_ALREADY:
                     break;
@@ -52,7 +52,7 @@ public class ClientInstance {
         }
     }
 
-    public ClientAPIImpl getClientAPIImpl() {
-        return clientAPIImpl;
+    public RemotingClientAPIImpl getRemotingClientAPIImpl() {
+        return remotingClientAPIImpl;
     }
 }

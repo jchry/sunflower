@@ -12,10 +12,10 @@ import com.jpeony.sunflower.remoting.protocol.RemotingCommand;
 /**
  * @author yihonglei
  */
-public class ClientAPIImpl {
+public class RemotingClientAPIImpl {
     private final RemotingClient remotingClient;
 
-    public ClientAPIImpl(final NettyClientConfig nettyClientConfig) {
+    public RemotingClientAPIImpl(final NettyClientConfig nettyClientConfig) {
         remotingClient = new NettyRemotingClient(nettyClientConfig);
     }
 
