@@ -1,63 +1,61 @@
-# 前言
+# Preface
 
-JDK8，持续完善中......
+JDK8 develops enviroments.
 
-# 一、sunflower 简介
+# Introduction
 
-Java 分布式系统监控。
+Java high performance distributed system monitoring.
 
-- 异常监控
+- Error
 
-- 分布式链路追踪
+- Distributed trace
 
-- HTTP 监控
+- HTTP
 
-- JVM 监控
+- JVM
 
-- MySql 监控
+- MySql
 
-- Redis 监控
+- Redis
 
-- MongoDB 监控
+- MongoDB
 
-- RocketMQ 监控
+- RocketMQ
 
-- ES 监控
+- ES
 
-- CPU 监控
+- CPU
 
-- 内存监控
+- IO
 
-- 磁盘 IO 监控
+- Load
 
-- 系统负载监控
+- Warn
 
-- 监控告警(钉钉推送)
+- Custom
 
-- 自定义监控
+# Model description
 
-# 二、sunflower 模块说明
+## sunflower-agent(client)
 
-## sunflower-agent（客户端）
+Responsible for monitoring data collection and reporting;
 
-负责监控数据采集上报；
+## sunflower-server(server)
 
-## sunflower-server（服务端）
+Responsible for monitoring data processing, storage, display, configurationg, etc;
 
-负责监控数据处理、存储、展示、配置等；
+## sunflower-remoting(rpc)
 
-## sunflower-remoting（远程通信）
+The basic communication components are implemented based on netty;
 
-基于Netty实现基础通信组件；
+## sunflower-logging(logger)
 
-## sunflower-logging（日志）
+Inner logger;
 
-内部日志；
+## sunflower-common(common)
 
-## sunflower-common（公共包）
+Common tool codes；
 
-公共工具代码包；
+## sunflower-examples(examples)
 
-## sunflower-examples（测试代码）
-
-agent应用、通信等测试demo；
+Test demo of agent application and communication, etc;
