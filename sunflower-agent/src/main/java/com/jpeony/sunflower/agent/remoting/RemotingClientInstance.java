@@ -17,7 +17,6 @@ public class RemotingClientInstance {
     }
 
     public void start() {
-        System.out.println("agent-start......");
         synchronized (this) {
             switch (this.serviceState) {
                 case CREATE_JUST:

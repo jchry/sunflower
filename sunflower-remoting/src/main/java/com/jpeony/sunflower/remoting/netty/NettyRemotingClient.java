@@ -234,7 +234,7 @@ public class NettyRemotingClient extends AbstractNettyRemoting implements Remoti
                         if (f.isSuccess()) {
                             return;
                         }
-                        System.out.println("发送失败");
+                        System.out.println("send failed");
                     }
                 });
             } catch (Exception e) {

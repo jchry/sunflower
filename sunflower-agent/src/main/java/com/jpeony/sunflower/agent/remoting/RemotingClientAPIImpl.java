@@ -27,8 +27,7 @@ public class RemotingClientAPIImpl {
         this.remotingClient.shutdown();
     }
 
-    public void sendMessage(final String addr, final RemotingCommand request, final long timeoutMillis) {
-        System.out.println("agent-sendMessage");
+    public void sendMonitor(final String addr, final RemotingCommand request, final long timeoutMillis) {
         try {
             remotingClient.invokeAsync(addr, request, timeoutMillis);
         } catch (InterruptedException e) {

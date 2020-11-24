@@ -3,7 +3,7 @@ package com.jpeony.sunflower.agent.config;
 /**
  * @author yihonglei
  */
-public class Config {
+public class AgentConfig {
     public static class Agent {
 
     }
