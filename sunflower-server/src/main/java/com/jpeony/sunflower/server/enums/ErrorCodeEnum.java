@@ -6,8 +6,8 @@ import lombok.Getter;
  * @author yihonglei
  */
 public enum ErrorCodeEnum {
-    SYSTEM_DEFAULT_ERROR(0, "Network exception, please try again."),
-    ILLEGAL_ARGUMENT_ERROR(10000, "invalid param.");
+    SYSTEM_DEFAULT_ERROR(0, "Network exception, please try again"),
+    ILLEGAL_ARGUMENT_ERROR(10000, "invalid param");
 
     @Getter
     private int code;
