@@ -1,5 +1,8 @@
 package com.jpeony.sunflower.agent.enums;
 
+/**
+ * @author yihonglei
+ */
 public enum ServiceState {
     /**
      * Service just created,not start
