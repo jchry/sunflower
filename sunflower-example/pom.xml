@@ -9,7 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>sunflower-examples</artifactId>
+    <artifactId>sunflower-example</artifactId>
     <packaging>jar</packaging>
 
     <properties>
