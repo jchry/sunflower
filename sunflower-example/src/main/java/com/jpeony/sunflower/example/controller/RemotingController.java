@@ -1,6 +1,5 @@
-package com.jpeony.sunflower.examples.controller;
+package com.jpeony.sunflower.example.controller;
 
-import com.jpeony.sunflower.remoting.RemotingClient;
 import com.jpeony.sunflower.remoting.exception.RemotingConnectException;
 import com.jpeony.sunflower.remoting.exception.RemotingSendRequestException;
 import com.jpeony.sunflower.remoting.exception.RemotingTimeoutException;

@@ -1,4 +1,4 @@
-package com.jpeony.sunflower.examples;
+package com.jpeony.sunflower.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

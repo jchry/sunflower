@@ -1,4 +1,4 @@
-package com.jpeony.sunflower.examples;
+package com.jpeony.sunflower.example;
 
 import static org.junit.Assert.assertTrue;
 
