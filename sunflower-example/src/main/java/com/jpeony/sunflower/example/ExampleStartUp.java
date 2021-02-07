@@ -8,9 +8,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @author yihonglei
  */
 @SpringBootApplication(scanBasePackages = "com.jpeony.*")
-public class ExamplesStartUp implements WebMvcConfigurer {
+public class ExampleStartUp implements WebMvcConfigurer {
 
     public static void main(String[] args) {
-        SpringApplication.run(ExamplesStartUp.class, args);
+        SpringApplication.run(ExampleStartUp.class, args);
     }
 }
