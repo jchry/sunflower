@@ -31,9 +31,6 @@ public abstract class AbstractNettyRemoting {
                 case REQUEST_COMMAND:
                     processRequestCommand(ctx, cmd);
                     break;
-                case RESPONSE_COMMAND:
-//                    processResponseCommand(ctx, cmd);
-                    break;
                 default:
                     break;
             }

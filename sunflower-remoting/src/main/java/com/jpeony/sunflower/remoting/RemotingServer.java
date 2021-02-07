@@ -9,6 +9,4 @@ import java.util.concurrent.ExecutorService;
  */
 public interface RemotingServer extends RemotingService {
     void registerProcessor(int requestCode, final NettyRequestProcessor processor, final ExecutorService executor);
-
-    void registerDefaultProcessor(final NettyRequestProcessor processor, final ExecutorService executor);
 }

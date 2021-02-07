@@ -9,12 +9,12 @@ import com.jpeony.sunflower.remoting.protocol.RemotingCommand;
  */
 public abstract class AbstractMonitor {
 
-    public void sendMonitor(RemotingCommand request) {
+    public void send(RemotingCommand request) {
         try {
             RemotingClientAPIImpl remotingClientAPIImpl =
                     RemotingClientManager.getInstance().getOrCreateClientInstance().getRemotingClientAPIImpl();
 
-            remotingClientAPIImpl.sendMonitor("localhost:9999", request, 1000 * 3);
+            remotingClientAPIImpl.send("localhost:9999", request, 1000 * 3);
         } catch (Exception e) {
             System.out.println("......");
         }
