@@ -86,7 +86,7 @@ public class NettyRemotingServer extends AbstractNettyRemoting implements Remoti
 
                     @Override
                     public Thread newThread(Runnable r) {
-                        return new Thread(r, "NettyServerWorkerThread_" + this.threadIndex.incrementAndGet());
+                        return new Thread(r, "NettyServerCodecThread_" + this.threadIndex.incrementAndGet());
                     }
                 });
 
@@ -105,13 +105,12 @@ public class NettyRemotingServer extends AbstractNettyRemoting implements Remoti
                         .childHandler(new ChannelInitializer<SocketChannel>() {
                             @Override
                             public void initChannel(SocketChannel ch) throws Exception {
-                                ch.pipeline()
-                                        .addLast(defaultEventExecutorGroup,
-                                                encoder,
-                                                new NettyDecoder(),
-                                                connectionManageHandler,
-                                                serverHandler
-                                        );
+                                ch.pipeline().addLast(defaultEventExecutorGroup,
+                                        encoder,
+                                        new NettyDecoder(),
+                                        connectionManageHandler,
+                                        serverHandler
+                                );
                             }
                         });
 
@@ -135,11 +134,6 @@ public class NettyRemotingServer extends AbstractNettyRemoting implements Remoti
 
         Pair<NettyRequestProcessor, ExecutorService> pair = new Pair<>(processor, executorThis);
         this.processorTable.put(requestCode, pair);
-    }
-
-    @Override
-    public void registerDefaultProcessor(NettyRequestProcessor processor, ExecutorService executor) {
-        this.defaultRequestProcessor = new Pair<NettyRequestProcessor, ExecutorService>(processor, executor);
     }
 
     @Override

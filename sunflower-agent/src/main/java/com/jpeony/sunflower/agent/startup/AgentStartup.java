@@ -1,7 +1,7 @@
 package com.jpeony.sunflower.agent.startup;
 
-import com.jpeony.sunflower.agent.remoting.RemotingClientInstance;
-import com.jpeony.sunflower.agent.remoting.RemotingClientManager;
+import com.jpeony.sunflower.agent.producer.MQClientInstance;
+import com.jpeony.sunflower.agent.producer.MQClientManager;
 
 /**
  * @author yihonglei
@@ -9,7 +9,7 @@ import com.jpeony.sunflower.agent.remoting.RemotingClientManager;
 public class AgentStartup {
     public static void main(String[] args) {
         // ClientInstance
-        RemotingClientInstance clientInstance = RemotingClientManager.getInstance().getOrCreateClientInstance();
+        MQClientInstance clientInstance = MQClientManager.getInstance().getOrCreateClientInstance();
 
         // Shutdown client
         Runtime.getRuntime().addShutdownHook(new Thread(clientInstance::shutdown));

@@ -1,4 +1,4 @@
-package com.jpeony.sunflower.agent.remoting;
+package com.jpeony.sunflower.agent.producer;
 
 import com.jpeony.sunflower.remoting.RemotingClient;
 import com.jpeony.sunflower.remoting.exception.RemotingConnectException;
@@ -9,13 +9,16 @@ import com.jpeony.sunflower.remoting.netty.NettyClientConfig;
 import com.jpeony.sunflower.remoting.netty.NettyRemotingClient;
 import com.jpeony.sunflower.remoting.protocol.RemotingCommand;
 
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+
 /**
  * @author yihonglei
  */
-public class RemotingClientAPIImpl {
+public class MQProducer {
     private final RemotingClient remotingClient;
 
-    public RemotingClientAPIImpl(final NettyClientConfig nettyClientConfig) {
+    public MQProducer(final NettyClientConfig nettyClientConfig) {
         remotingClient = new NettyRemotingClient(nettyClientConfig);
     }
 

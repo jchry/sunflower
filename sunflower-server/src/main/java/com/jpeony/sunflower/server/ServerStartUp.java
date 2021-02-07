@@ -4,7 +4,7 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.google.common.collect.Lists;
-import com.jpeony.sunflower.server.remoting.RemotingServerManager;
+import com.jpeony.sunflower.server.consumer.MQServerManager;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -27,7 +27,7 @@ public class ServerStartUp implements WebMvcConfigurer, CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        RemotingServerManager serverManager = new RemotingServerManager();
+        MQServerManager serverManager = new MQServerManager();
 
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             @Override

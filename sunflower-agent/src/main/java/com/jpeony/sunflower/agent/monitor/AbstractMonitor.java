@@ -1,7 +1,7 @@
 package com.jpeony.sunflower.agent.monitor;
 
-import com.jpeony.sunflower.agent.remoting.RemotingClientAPIImpl;
-import com.jpeony.sunflower.agent.remoting.RemotingClientManager;
+import com.jpeony.sunflower.agent.producer.MQProducer;
+import com.jpeony.sunflower.agent.producer.MQClientManager;
 import com.jpeony.sunflower.remoting.protocol.RemotingCommand;
 
 /**
@@ -11,10 +11,10 @@ public abstract class AbstractMonitor {
 
     public void send(RemotingCommand request) {
         try {
-            RemotingClientAPIImpl remotingClientAPIImpl =
-                    RemotingClientManager.getInstance().getOrCreateClientInstance().getRemotingClientAPIImpl();
+            MQProducer MQProducer =
+                    MQClientManager.getInstance().getOrCreateClientInstance().getMQProducer();
 
-            remotingClientAPIImpl.send("localhost:9999", request, 1000 * 3);
+            MQProducer.send("localhost:9999", request, 1000 * 3);
         } catch (Exception e) {
             System.out.println("......");
         }

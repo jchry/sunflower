@@ -1,4 +1,4 @@
-package com.jpeony.sunflower.server.remoting;
+package com.jpeony.sunflower.server.consumer;
 
 import com.jpeony.sunflower.common.protocol.RequestCode;
 import com.jpeony.sunflower.remoting.RemotingServer;
@@ -14,16 +14,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * @author yihonglei
  */
-public class RemotingServerManager {
+public class MQServerManager {
     private final NettyServerConfig nettyServerConfig;
     private RemotingServer remotingServer;
     private ExecutorService remotingExecutor;
 
-    public RemotingServerManager() {
+    public MQServerManager() {
         this.nettyServerConfig = new NettyServerConfig();
     }
 
-    public boolean initialize() {
+    private boolean initialize() {
         remotingServer = new NettyRemotingServer(nettyServerConfig);
 
         this.remotingExecutor = Executors.newFixedThreadPool(nettyServerConfig.getServerWorkerThreads(),

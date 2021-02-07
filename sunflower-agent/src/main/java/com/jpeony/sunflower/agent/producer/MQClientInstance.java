@@ -1,4 +1,4 @@
-package com.jpeony.sunflower.agent.remoting;
+package com.jpeony.sunflower.agent.producer;
 
 import com.jpeony.sunflower.agent.enums.ServiceState;
 import com.jpeony.sunflower.remoting.netty.NettyClientConfig;
@@ -6,14 +6,14 @@ import com.jpeony.sunflower.remoting.netty.NettyClientConfig;
 /**
  * @author yihonglei
  */
-public class RemotingClientInstance {
+public class MQClientInstance {
     private final NettyClientConfig nettyClientConfig;
-    private final RemotingClientAPIImpl remotingClientAPIImpl;
+    private final MQProducer MQProducer;
     private ServiceState serviceState = ServiceState.CREATE_JUST;
 
-    public RemotingClientInstance() {
+    public MQClientInstance() {
         this.nettyClientConfig = new NettyClientConfig();
-        this.remotingClientAPIImpl = new RemotingClientAPIImpl(nettyClientConfig);
+        this.MQProducer = new MQProducer(nettyClientConfig);
     }
 
     public void start() {
@@ -21,7 +21,7 @@ public class RemotingClientInstance {
             switch (this.serviceState) {
                 case CREATE_JUST:
                     // Start request channel
-                    this.remotingClientAPIImpl.start();
+                    this.MQProducer.start();
                     serviceState = ServiceState.RUNNING;
                     break;
                 case START_FAILED:
@@ -41,7 +41,7 @@ public class RemotingClientInstance {
                     break;
                 case RUNNING:
                     this.serviceState = ServiceState.SHUTDOWN_ALREADY;
-                    this.remotingClientAPIImpl.shutdown();
+                    this.MQProducer.shutdown();
                     break;
                 case SHUTDOWN_ALREADY:
                     break;
@@ -51,7 +51,7 @@ public class RemotingClientInstance {
         }
     }
 
-    public RemotingClientAPIImpl getRemotingClientAPIImpl() {
-        return remotingClientAPIImpl;
+    public MQProducer getMQProducer() {
+        return MQProducer;
     }
 }
