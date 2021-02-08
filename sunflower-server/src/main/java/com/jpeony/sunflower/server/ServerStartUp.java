@@ -4,7 +4,7 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.google.common.collect.Lists;
-import com.jpeony.sunflower.server.consumer.MQServerManager;
+import com.jpeony.sunflower.server.consumer.MQConsumer;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -27,22 +27,22 @@ public class ServerStartUp implements WebMvcConfigurer, CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        MQServerManager mqServerManager = MQServerManager.createMQServerManager(args);
+        MQConsumer mqConsumer = MQConsumer.createMQServerManager(args);
 
-        boolean initResult = mqServerManager.initialize();
+        boolean initResult = mqConsumer.initialize();
         if (!initResult) {
-            mqServerManager.shutdown();
+            mqConsumer.shutdown();
             System.exit(-3);
         }
 
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             @Override
             public void run() {
-                mqServerManager.shutdown();
+                mqConsumer.shutdown();
             }
         }));
 
-        mqServerManager.start();
+        mqConsumer.start();
     }
 
     @Override

@@ -213,38 +213,33 @@ public class NettyRemotingClient extends AbstractNettyRemoting implements Remoti
 
     public void invokeOnewayImpl(final Channel channel, final RemotingCommand request, final long timeoutMillis)
             throws InterruptedException, RemotingTooMuchRequestException, RemotingTimeoutException, RemotingSendRequestException {
-        long beginStartTime = System.currentTimeMillis();
         boolean acquired = this.semaphoreOneway.tryAcquire(timeoutMillis, TimeUnit.MILLISECONDS);
         if (acquired) {
             final SemaphoreReleaseOnlyOnce once = new SemaphoreReleaseOnlyOnce(this.semaphoreOneway);
-            long costTime = System.currentTimeMillis() - beginStartTime;
-            if (timeoutMillis < costTime) {
-                once.release();
-                throw new RemotingTimeoutException("invokeAsyncImpl call timeout");
-            }
             try {
                 channel.writeAndFlush(request).addListener(new ChannelFutureListener() {
                     @Override
                     public void operationComplete(ChannelFuture f) throws Exception {
-                        if (f.isSuccess()) {
-                            return;
+                        once.release();
+                        if (!f.isSuccess()) {
+                            System.out.println("send failed");
                         }
-                        System.out.println("send failed");
                     }
                 });
             } catch (Exception e) {
+                once.release();
                 throw new RemotingSendRequestException(RemotingHelper.parseChannelRemoteAddr(channel), e);
             }
         } else {
             if (timeoutMillis <= 0) {
                 throw new RemotingTooMuchRequestException("invokeAsyncImpl invoke too fast");
             } else {
-                String info =
-                        String.format("invokeAsyncImpl tryAcquire semaphore timeout, %dms, waiting thread nums: %d semaphoreAsyncValue: %d",
-                                timeoutMillis,
-                                this.semaphoreOneway.getQueueLength(),
-                                this.semaphoreOneway.availablePermits()
-                        );
+                String info = String.format(
+                        "invokeAsyncImpl tryAcquire semaphore timeout, %dms, waiting thread nums: %d semaphoreAsyncValue: %d",
+                        timeoutMillis,
+                        this.semaphoreOneway.getQueueLength(),
+                        this.semaphoreOneway.availablePermits()
+                );
                 throw new RemotingTimeoutException(info);
             }
         }

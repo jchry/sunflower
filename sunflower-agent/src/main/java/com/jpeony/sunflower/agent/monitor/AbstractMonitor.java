@@ -1,7 +1,6 @@
 package com.jpeony.sunflower.agent.monitor;
 
 import com.jpeony.sunflower.agent.producer.MQProducer;
-import com.jpeony.sunflower.agent.producer.MQClientManager;
 import com.jpeony.sunflower.remoting.protocol.RemotingCommand;
 
 /**
@@ -11,10 +10,14 @@ public abstract class AbstractMonitor {
 
     public void send(RemotingCommand request) {
         try {
-            MQProducer MQProducer =
-                    MQClientManager.getInstance().getOrCreateClientInstance().getMQProducer();
+            MQProducer mqProducer = MQProducer.getInstance();
 
-            MQProducer.send("localhost:9999", request, 1000 * 3);
+            /*
+             * Launch the instance
+             */
+            mqProducer.start();
+
+            mqProducer.send("localhost:9898", request, mqProducer.getSendMsgTimeout());
         } catch (Exception e) {
             System.out.println("......");
         }

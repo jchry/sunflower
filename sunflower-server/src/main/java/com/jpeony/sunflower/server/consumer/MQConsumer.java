@@ -14,20 +14,20 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * @author yihonglei
  */
-public class MQServerManager {
+public class MQConsumer {
     private final NettyServerConfig nettyServerConfig;
     private RemotingServer remotingServer;
     private ExecutorService remotingExecutor;
 
-    public MQServerManager(NettyServerConfig nettyServerConfig) {
+    public MQConsumer(NettyServerConfig nettyServerConfig) {
         this.nettyServerConfig = nettyServerConfig;
     }
 
-    public static MQServerManager createMQServerManager(String[] args) {
+    public static MQConsumer createMQServerManager(String[] args) {
         final NettyServerConfig nettyServerConfig = new NettyServerConfig();
-        final MQServerManager mqServerManager = new MQServerManager(nettyServerConfig);
+        final MQConsumer mqConsumer = new MQConsumer(nettyServerConfig);
 
-        return mqServerManager;
+        return mqConsumer;
     }
 
     public boolean initialize() {
