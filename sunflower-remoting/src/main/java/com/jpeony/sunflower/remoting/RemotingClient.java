@@ -10,7 +10,7 @@ import com.jpeony.sunflower.remoting.protocol.RemotingCommand;
  * @author yihonglei
  */
 public interface RemotingClient extends RemotingService {
-    void invokeAsync(final String addr, final RemotingCommand request, final long timeoutMillis)
+    void invokeOneway(final String addr, final RemotingCommand request, final long timeoutMillis)
             throws InterruptedException, RemotingConnectException, RemotingTooMuchRequestException,
             RemotingTimeoutException, RemotingSendRequestException;
 }

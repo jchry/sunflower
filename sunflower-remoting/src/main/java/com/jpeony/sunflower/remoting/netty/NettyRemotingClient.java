@@ -130,18 +130,13 @@ public class NettyRemotingClient extends AbstractNettyRemoting implements Remoti
     }
 
     @Override
-    public void invokeAsync(String addr, RemotingCommand request, long timeoutMillis)
+    public void invokeOneway(String addr, RemotingCommand request, long timeoutMillis)
             throws InterruptedException, RemotingConnectException, RemotingTooMuchRequestException,
             RemotingTimeoutException, RemotingSendRequestException {
-        long beginStartTime = System.currentTimeMillis();
         final Channel channel = this.getAndCreateChannel(addr);
         if (channel != null && channel.isActive()) {
             try {
-                long costTime = System.currentTimeMillis() - beginStartTime;
-                if (timeoutMillis < costTime) {
-                    throw new RemotingTooMuchRequestException("invokeAsync call timeout");
-                }
-                this.invokeAsyncImpl(channel, request, timeoutMillis - costTime);
+                this.invokeOnewayImpl(channel, request, timeoutMillis);
             } catch (RemotingSendRequestException e) {
                 this.closeChannel(addr, channel);
                 throw e;
@@ -216,12 +211,12 @@ public class NettyRemotingClient extends AbstractNettyRemoting implements Remoti
         return null;
     }
 
-    public void invokeAsyncImpl(final Channel channel, final RemotingCommand request, final long timeoutMillis)
+    public void invokeOnewayImpl(final Channel channel, final RemotingCommand request, final long timeoutMillis)
             throws InterruptedException, RemotingTooMuchRequestException, RemotingTimeoutException, RemotingSendRequestException {
         long beginStartTime = System.currentTimeMillis();
-        boolean acquired = this.semaphoreAsync.tryAcquire(timeoutMillis, TimeUnit.MILLISECONDS);
+        boolean acquired = this.semaphoreOneway.tryAcquire(timeoutMillis, TimeUnit.MILLISECONDS);
         if (acquired) {
-            final SemaphoreReleaseOnlyOnce once = new SemaphoreReleaseOnlyOnce(this.semaphoreAsync);
+            final SemaphoreReleaseOnlyOnce once = new SemaphoreReleaseOnlyOnce(this.semaphoreOneway);
             long costTime = System.currentTimeMillis() - beginStartTime;
             if (timeoutMillis < costTime) {
                 once.release();
@@ -247,8 +242,8 @@ public class NettyRemotingClient extends AbstractNettyRemoting implements Remoti
                 String info =
                         String.format("invokeAsyncImpl tryAcquire semaphore timeout, %dms, waiting thread nums: %d semaphoreAsyncValue: %d",
                                 timeoutMillis,
-                                this.semaphoreAsync.getQueueLength(),
-                                this.semaphoreAsync.availablePermits()
+                                this.semaphoreOneway.getQueueLength(),
+                                this.semaphoreOneway.availablePermits()
                         );
                 throw new RemotingTimeoutException(info);
             }

@@ -18,10 +18,10 @@ public abstract class AbstractNettyRemoting {
 
     protected Pair<NettyRequestProcessor, ExecutorService> defaultRequestProcessor;
 
-    protected final Semaphore semaphoreAsync;
+    protected final Semaphore semaphoreOneway;
 
-    public AbstractNettyRemoting(final int permitsAsync) {
-        this.semaphoreAsync = new Semaphore(permitsAsync, true);
+    public AbstractNettyRemoting(final int permitsOneway) {
+        this.semaphoreOneway = new Semaphore(permitsOneway, true);
     }
 
     public void processMessageReceived(ChannelHandlerContext ctx, RemotingCommand msg) throws Exception {
@@ -46,15 +46,10 @@ public abstract class AbstractNettyRemoting {
                 @Override
                 public void run() {
                     try {
-                        if (pair.getObject1() instanceof AsyncNettyRequestProcessor) {
-                            AsyncNettyRequestProcessor processor = (AsyncNettyRequestProcessor) pair.getObject1();
-                            processor.asyncProcessRequest(ctx, cmd);
-                        } else {
-                            NettyRequestProcessor processor = pair.getObject1();
-                            processor.processRequest(ctx, cmd);
-                        }
+                        NettyRequestProcessor processor = pair.getObject1();
+                        processor.processRequest(ctx, cmd);
                     } catch (Throwable e) {
-
+                        System.out.println("process request exception, " + e);
                     }
                 }
             };
@@ -67,7 +62,7 @@ public abstract class AbstractNettyRemoting {
                 final RequestTask requestTask = new RequestTask(run, ctx.channel(), cmd);
                 pair.getObject2().submit(requestTask);
             } catch (RejectedExecutionException e) {
-
+                System.out.println("too many requests and system thread pool busy");
             }
         }
     }

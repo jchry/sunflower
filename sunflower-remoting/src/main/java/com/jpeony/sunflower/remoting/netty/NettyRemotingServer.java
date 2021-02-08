@@ -90,7 +90,7 @@ public class NettyRemotingServer extends AbstractNettyRemoting implements Remoti
                     }
                 });
 
-        prepareHandlers();
+        prepareSharableHandlers();
 
         ServerBootstrap childHandler =
                 this.serverBootstrap.group(this.eventLoopGroupBoss, this.eventLoopGroupSelector)
@@ -147,19 +147,19 @@ public class NettyRemotingServer extends AbstractNettyRemoting implements Remoti
                 this.defaultEventExecutorGroup.shutdownGracefully();
             }
         } catch (Exception e) {
-
+            System.out.println("NettyRemotingServer shutdown exception, " + e);
         }
 
         if (this.publicExecutor != null) {
             try {
                 this.publicExecutor.shutdown();
             } catch (Exception e) {
-
+                System.out.println("NettyRemotingServer shutdown exception, " + e);
             }
         }
     }
 
-    private void prepareHandlers() {
+    private void prepareSharableHandlers() {
         encoder = new NettyEncoder();
         connectionManageHandler = new NettyConnectManageHandler();
         serverHandler = new NettyServerHandler();

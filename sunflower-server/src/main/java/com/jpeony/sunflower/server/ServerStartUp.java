@@ -26,17 +26,23 @@ public class ServerStartUp implements WebMvcConfigurer, CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
-        MQServerManager serverManager = new MQServerManager();
+    public void run(String... args) {
+        MQServerManager mqServerManager = new MQServerManager();
+
+        boolean initResult = mqServerManager.initialize();
+        if (!initResult) {
+            mqServerManager.shutdown();
+            System.exit(-3);
+        }
 
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             @Override
             public void run() {
-                serverManager.shutdown();
+                mqServerManager.shutdown();
             }
         }));
 
-        serverManager.start();
+        mqServerManager.start();
     }
 
     @Override

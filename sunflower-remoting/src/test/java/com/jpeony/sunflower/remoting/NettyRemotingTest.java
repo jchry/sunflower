@@ -20,7 +20,7 @@ public class NettyRemotingTest {
     public static RemotingServer createRemotingServer() {
         NettyServerConfig config = new NettyServerConfig();
         RemotingServer remotingServer = new NettyRemotingServer(config);
-        remotingServer.registerProcessor(0, new AsyncNettyRequestProcessor() {
+        remotingServer.registerProcessor(0, new NettyRequestProcessor() {
             @Override
             public void processRequest(ChannelHandlerContext ctx, RemotingCommand request) {
                 request.setRemark("Hi " + ctx.channel().remoteAddress());
@@ -62,11 +62,11 @@ public class NettyRemotingTest {
     }
 
     @Test
-    public void testInvokeAsync() throws InterruptedException, RemotingConnectException,
+    public void testInvokeOneway() throws InterruptedException, RemotingConnectException,
             RemotingTimeoutException, RemotingTooMuchRequestException, RemotingSendRequestException {
         RemotingCommand request = RemotingCommand.createRequestCommand(0);
         request.setRemark("message");
-        remotingClient.invokeAsync("localhost:9999", request, 1000 * 3);
+        remotingClient.invokeOneway("localhost:9999", request, 1000 * 3);
         Thread.sleep(300000);
     }
 }

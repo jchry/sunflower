@@ -32,7 +32,7 @@ public class MQProducer {
 
     public void send(final String addr, final RemotingCommand request, final long timeoutMillis) {
         try {
-            remotingClient.invokeAsync(addr, request, timeoutMillis);
+            remotingClient.invokeOneway(addr, request, timeoutMillis);
         } catch (InterruptedException e) {
             System.out.println("InterruptedException");
         } catch (RemotingConnectException e) {

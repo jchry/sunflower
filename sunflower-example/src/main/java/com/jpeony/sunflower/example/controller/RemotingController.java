@@ -27,7 +27,7 @@ public class RemotingController {
         RemotingCommand request = RemotingCommand.createRequestCommand(requestCode);
         request.setRemark("message");
 
-        remotingClient.invokeAsync("localhost:9999", request, 1000 * 3);
+        remotingClient.invokeOneway("localhost:9999", request, 1000 * 3);
         return "SUCCESS";
     }
 }

@@ -23,10 +23,10 @@ public class MQServerManager {
         this.nettyServerConfig = new NettyServerConfig();
     }
 
-    private boolean initialize() {
-        remotingServer = new NettyRemotingServer(nettyServerConfig);
+    public boolean initialize() {
+        this.remotingServer = new NettyRemotingServer(this.nettyServerConfig);
 
-        this.remotingExecutor = Executors.newFixedThreadPool(nettyServerConfig.getServerWorkerThreads(),
+        this.remotingExecutor = Executors.newFixedThreadPool(this.nettyServerConfig.getServerWorkerThreads(),
                 new ThreadFactory() {
                     private AtomicInteger threadIndex = new AtomicInteger(0);
 
@@ -42,29 +42,23 @@ public class MQServerManager {
     }
 
     private void registerProcessor() {
-        remotingServer.registerProcessor(RequestCode.SEND_ERROR_MONITOR_MESSAGE, new ErrorProcessor(), remotingExecutor);
-        remotingServer.registerProcessor(RequestCode.SEND_JVM_MONITOR_MESSAGE, new JVMProcessor(), remotingExecutor);
-        remotingServer.registerProcessor(RequestCode.SEND_HTTP_MONITOR_MESSAGE, new HttpProcessor(), remotingExecutor);
-        remotingServer.registerProcessor(RequestCode.SEND_MYSQL_MONITOR_MESSAGE, new MySqlProcessor(), remotingExecutor);
-        remotingServer.registerProcessor(RequestCode.SEND_REDIS_MONITOR_MESSAGE, new RedisProcessor(), remotingExecutor);
-        remotingServer.registerProcessor(RequestCode.SEND_MONGODB_MONITOR_MESSAGE, new MongodbProcessor(), remotingExecutor);
-        remotingServer.registerProcessor(RequestCode.SEND_ES_MONITOR_MESSAGE, new ESProcessor(), remotingExecutor);
-        remotingServer.registerProcessor(RequestCode.SEND_CPU_MONITOR_MESSAGE, new CPUProcessor(), remotingExecutor);
-        remotingServer.registerProcessor(RequestCode.SEND_IO_MONITOR_MESSAGE, new IOProcessor(), remotingExecutor);
+        this.remotingServer.registerProcessor(RequestCode.SEND_ERROR_MONITOR_MESSAGE, new ErrorProcessor(), this.remotingExecutor);
+        this.remotingServer.registerProcessor(RequestCode.SEND_JVM_MONITOR_MESSAGE, new JVMProcessor(), this.remotingExecutor);
+        this.remotingServer.registerProcessor(RequestCode.SEND_HTTP_MONITOR_MESSAGE, new HttpProcessor(), this.remotingExecutor);
+        this.remotingServer.registerProcessor(RequestCode.SEND_MYSQL_MONITOR_MESSAGE, new MySqlProcessor(), this.remotingExecutor);
+        this.remotingServer.registerProcessor(RequestCode.SEND_REDIS_MONITOR_MESSAGE, new RedisProcessor(), this.remotingExecutor);
+        this.remotingServer.registerProcessor(RequestCode.SEND_MONGODB_MONITOR_MESSAGE, new MongodbProcessor(), this.remotingExecutor);
+        this.remotingServer.registerProcessor(RequestCode.SEND_ES_MONITOR_MESSAGE, new ESProcessor(), this.remotingExecutor);
+        this.remotingServer.registerProcessor(RequestCode.SEND_CPU_MONITOR_MESSAGE, new CPUProcessor(), this.remotingExecutor);
+        this.remotingServer.registerProcessor(RequestCode.SEND_IO_MONITOR_MESSAGE, new IOProcessor(), this.remotingExecutor);
     }
 
     public void start() {
-        boolean initResult = this.initialize();
-
-        if (!initResult) {
-            shutdown();
-        }
-
-        remotingServer.start();
+        this.remotingServer.start();
     }
 
     public void shutdown() {
-        remotingServer.shutdown();
-        remotingExecutor.shutdown();
+        this.remotingServer.shutdown();
+        this.remotingExecutor.shutdown();
     }
 }
