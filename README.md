@@ -14,21 +14,13 @@ Java high performance distributed system monitoring.
 
 - JVM
 
-- MySql
-
-- Redis
-
-- MongoDB
-
-- RocketMQ
-
-- ES
-
 - CPU
 
 - IO
 
-- Load
+- MySql
+
+- Redis
 
 - Warn
 
@@ -38,24 +30,24 @@ Java high performance distributed system monitoring.
 
 ## sunflower-agent(client)
 
-Responsible for monitoring data collection and reporting;
+Responsible for monitoring data collection and reporting.
 
 ## sunflower-server(server)
 
-Responsible for monitoring data processing, storage, display, configurationg, etc;
+Responsible for monitoring data processing, storage, display, configurationg, etc.
 
 ## sunflower-remoting(rpc)
 
-The basic communication components are implemented based on netty;
+The basic communication components are implemented based on netty.
 
 ## sunflower-logging(logger)
 
-Inner logger;
+Inner logger.
 
 ## sunflower-common(common)
 
-Common tool codes；
+Common tools.
 
 ## sunflower-example(example)
 
-Test demo of agent application and communication, etc;
+Test demo of agent application , communication, monitoring, etc.
