@@ -56,6 +56,6 @@ Inner logger;
 
 Common tool codes；
 
-## sunflower-examples(examples)
+## sunflower-example(example)
 
 Test demo of agent application and communication, etc;
