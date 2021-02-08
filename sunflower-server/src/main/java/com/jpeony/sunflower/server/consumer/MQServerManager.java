@@ -19,8 +19,15 @@ public class MQServerManager {
     private RemotingServer remotingServer;
     private ExecutorService remotingExecutor;
 
-    public MQServerManager() {
-        this.nettyServerConfig = new NettyServerConfig();
+    public MQServerManager(NettyServerConfig nettyServerConfig) {
+        this.nettyServerConfig = nettyServerConfig;
+    }
+
+    public static MQServerManager createMQServerManager(String[] args) {
+        final NettyServerConfig nettyServerConfig = new NettyServerConfig();
+        final MQServerManager mqServerManager = new MQServerManager(nettyServerConfig);
+
+        return mqServerManager;
     }
 
     public boolean initialize() {

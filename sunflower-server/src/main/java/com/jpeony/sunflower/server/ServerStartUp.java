@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * @author yihonglei
  */
-@SpringBootApplication(scanBasePackages = "com.jpeony.*")
+@SpringBootApplication(scanBasePackages = "com.jpeony.sunflower.server.*")
 public class ServerStartUp implements WebMvcConfigurer, CommandLineRunner {
 
     public static void main(String[] args) {
@@ -27,7 +27,7 @@ public class ServerStartUp implements WebMvcConfigurer, CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        MQServerManager mqServerManager = new MQServerManager();
+        MQServerManager mqServerManager = MQServerManager.createMQServerManager(args);
 
         boolean initResult = mqServerManager.initialize();
         if (!initResult) {

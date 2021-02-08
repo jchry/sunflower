@@ -37,7 +37,7 @@ public class NettyRemotingServer extends AbstractNettyRemoting implements Remoti
     private NettyServerHandler serverHandler;
 
     public NettyRemotingServer(NettyServerConfig nettyServerConfig) {
-        super(nettyServerConfig.getServerAsyncSemaphoreValue());
+        super(nettyServerConfig.getServerOnewaySemaphoreValue());
         this.serverBootstrap = new ServerBootstrap();
         this.nettyServerConfig = nettyServerConfig;
 
