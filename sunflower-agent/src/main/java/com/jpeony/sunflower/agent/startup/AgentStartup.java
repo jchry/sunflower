@@ -17,7 +17,7 @@ public class AgentStartup {
                 }
             }));
             /*
-             * Launch the instance
+             * Launch the producer instance.
              */
             producer.start();
         } catch (Exception e) {
