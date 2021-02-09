@@ -4,7 +4,7 @@ package com.jpeony.sunflower.remoting.netty;
  * @author yihonglei
  */
 public class NettyServerConfig implements Cloneable {
-    private int listenPort = 9898;
+    private int listenPort = 9999;
     private int serverWorkerThreads = 8;
     private int serverCallbackExecutorThreads = 0;
     private int serverSelectorThreads = 3;
