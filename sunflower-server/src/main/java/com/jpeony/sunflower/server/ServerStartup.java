@@ -19,10 +19,10 @@ import java.util.List;
  * @author yihonglei
  */
 @SpringBootApplication(scanBasePackages = "com.jpeony.sunflower.server.*")
-public class ServerStartUp implements WebMvcConfigurer, CommandLineRunner {
+public class ServerStartup implements WebMvcConfigurer, CommandLineRunner {
 
     public static void main(String[] args) {
-        SpringApplication.run(ServerStartUp.class, args);
+        SpringApplication.run(ServerStartup.class, args);
     }
 
     @Override
