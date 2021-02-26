@@ -24,6 +24,7 @@ public class MQConsumer {
     }
 
     public static MQConsumer createMQServerManager(String[] args) {
+        // TODO Dynamic acquire configuration
         final NettyServerConfig nettyServerConfig = new NettyServerConfig();
         final MQConsumer mqConsumer = new MQConsumer(nettyServerConfig);
 
