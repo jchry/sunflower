@@ -1,7 +1,3 @@
-# Preface
-
-JDK8 develops enviroments.
-
 # Introduction
 
 Java high performance distributed system monitoring.
