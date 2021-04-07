@@ -1,7 +1,3 @@
-# Preface
-
-JDK8 develops enviroments.
-
 # Introduction
 
 Java high performance distributed system monitoring.
@@ -18,13 +14,11 @@ Java high performance distributed system monitoring.
 
 - IO
 
-- MySql
+- MySQL
 
 - Redis
 
-- Warn
-
-- Custom
+- Alarm
 
 # Model description
 
@@ -34,7 +28,7 @@ Responsible for monitoring data collection and reporting.
 
 ## sunflower-server(server)
 
-Responsible for monitoring data processing, storage, display, configurationg, etc.
+Responsible for monitoring data processing, storage, display, configuration, etc.
 
 ## sunflower-remoting(rpc)
 
