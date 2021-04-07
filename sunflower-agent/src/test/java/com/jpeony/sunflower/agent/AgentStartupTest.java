@@ -1,6 +1,6 @@
 package com.jpeony.sunflower.agent;
 
-import com.jpeony.sunflower.agent.processor.ErrorMonitorProcessor;
+import com.jpeony.sunflower.agent.processor.ErrorProcessor;
 import com.jpeony.sunflower.agent.producer.MQProducer;
 
 import java.util.concurrent.CountDownLatch;
@@ -29,7 +29,7 @@ public class AgentStartupTest {
                 @Override
                 public void run() {
                     try {
-                        ErrorMonitorProcessor error = new ErrorMonitorProcessor();
+                        ErrorProcessor error = new ErrorProcessor();
                         error.errorMonitor();
                     } catch (Exception e) {
                         e.printStackTrace();

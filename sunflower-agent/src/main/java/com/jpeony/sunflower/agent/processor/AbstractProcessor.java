@@ -6,7 +6,7 @@ import com.jpeony.sunflower.remoting.protocol.RemotingCommand;
 /**
  * @author yihonglei
  */
-public abstract class AbstractMonitorProcessor {
+public abstract class AbstractProcessor {
 
     public void send(RemotingCommand request) {
         try {
