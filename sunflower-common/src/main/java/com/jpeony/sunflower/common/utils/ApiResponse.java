@@ -7,48 +7,35 @@ import lombok.Setter;
 import java.io.Serializable;
 
 /**
- * 响应规范
- *
  * @author yihonglei
  */
 public final class ApiResponse<T> implements Serializable {
+
+    private static final long serialVersionUID = 4821891515403482645L;
+
     /**
-     * 1 成功
+     * 1 SUCCESS
      */
     private static final int SUCCESS_CODE = 1;
 
     /**
-     * 0 失败
+     * 0 ERROR
      */
     private static final int ERROR_CODE = 0;
 
-    /**
-     * 成功
-     */
     private static final ApiResponse SUCCESS = new ApiResponse(SUCCESS_CODE, "SUCCESS", null);
 
-    /**
-     * 失败
-     */
+
     private static final ApiResponse ERROR = new ApiResponse(ERROR_CODE, "ERROR", null);
 
-    /**
-     * 返回状态码
-     */
     @Getter
     @Setter
     private int code;
 
-    /**
-     * 提示信息
-     */
     @Getter
     @Setter
     private String msg;
 
-    /**
-     * 数据
-     */
     @Getter
     @Setter
     private T data;
