@@ -1,4 +1,4 @@
-package com.jpeony.sunflower.server.pojo.dto;
+package com.jpeony.sunflower.common.pojo.dto;
 
 /**
  * @author yihonglei

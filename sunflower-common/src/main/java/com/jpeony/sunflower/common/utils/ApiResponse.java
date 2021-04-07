@@ -1,6 +1,6 @@
-package com.jpeony.sunflower.server.util;
+package com.jpeony.sunflower.common.utils;
 
-import com.jpeony.sunflower.server.enums.ErrorCodeEnum;
+import com.jpeony.sunflower.common.enums.ErrorCodeEnum;
 import lombok.Getter;
 import lombok.Setter;
 

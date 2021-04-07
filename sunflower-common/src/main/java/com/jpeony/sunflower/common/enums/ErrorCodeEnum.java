@@ -1,4 +1,4 @@
-package com.jpeony.sunflower.server.enums;
+package com.jpeony.sunflower.common.enums;
 
 import lombok.Getter;
 

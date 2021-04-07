@@ -1,4 +1,4 @@
-package com.jpeony.sunflower.server.pojo.bo;
+package com.jpeony.sunflower.common.pojo.vo;
 
 /**
  * @author yihonglei
