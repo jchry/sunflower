@@ -50,15 +50,14 @@ public class MQConsumer {
     }
 
     private void registerProcessor() {
-        this.remotingServer.registerProcessor(RequestCode.SEND_ERROR_MONITOR_MESSAGE, new ErrorProcessor(), this.remotingExecutor);
-        this.remotingServer.registerProcessor(RequestCode.SEND_JVM_MONITOR_MESSAGE, new JVMProcessor(), this.remotingExecutor);
-        this.remotingServer.registerProcessor(RequestCode.SEND_HTTP_MONITOR_MESSAGE, new HttpProcessor(), this.remotingExecutor);
-        this.remotingServer.registerProcessor(RequestCode.SEND_MYSQL_MONITOR_MESSAGE, new MySqlProcessor(), this.remotingExecutor);
-        this.remotingServer.registerProcessor(RequestCode.SEND_REDIS_MONITOR_MESSAGE, new RedisProcessor(), this.remotingExecutor);
-        this.remotingServer.registerProcessor(RequestCode.SEND_MONGODB_MONITOR_MESSAGE, new MongodbProcessor(), this.remotingExecutor);
-        this.remotingServer.registerProcessor(RequestCode.SEND_ES_MONITOR_MESSAGE, new ESProcessor(), this.remotingExecutor);
-        this.remotingServer.registerProcessor(RequestCode.SEND_CPU_MONITOR_MESSAGE, new CPUProcessor(), this.remotingExecutor);
-        this.remotingServer.registerProcessor(RequestCode.SEND_IO_MONITOR_MESSAGE, new IOProcessor(), this.remotingExecutor);
+        this.remotingServer.registerProcessor(RequestCode.SEND_ERROR_MESSAGE, new ErrorProcessor(), this.remotingExecutor);
+        this.remotingServer.registerProcessor(RequestCode.SEND_JVM_MESSAGE, new JVMProcessor(), this.remotingExecutor);
+        this.remotingServer.registerProcessor(RequestCode.SEND_HTTP_MESSAGE, new HttpProcessor(), this.remotingExecutor);
+        this.remotingServer.registerProcessor(RequestCode.SEND_MYSQL_MESSAGE, new MySqlProcessor(), this.remotingExecutor);
+        this.remotingServer.registerProcessor(RequestCode.SEND_REDIS_MESSAGE, new RedisProcessor(), this.remotingExecutor);
+        this.remotingServer.registerProcessor(RequestCode.SEND_MONGODB_MESSAGE, new MongodbProcessor(), this.remotingExecutor);
+        this.remotingServer.registerProcessor(RequestCode.SEND_ES_MESSAGE, new ESProcessor(), this.remotingExecutor);
+        this.remotingServer.registerProcessor(RequestCode.SEND_CPU_MESSAGE, new CPUProcessor(), this.remotingExecutor);
     }
 
     public void start() {
