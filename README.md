@@ -20,28 +20,10 @@ Java high performance distributed system monitoring.
 
 - Alarm
 
-# Model description
+# Quick Start
 
-## sunflower-agent(client)
 
-Responsible for monitoring data collection and reporting.
+# Documentation
 
-## sunflower-server(server)
 
-Responsible for monitoring data processing, storage, display, configuration, etc.
-
-## sunflower-remoting(rpc)
-
-The basic communication components are implemented based on netty.
-
-## sunflower-logging(logger)
-
-Inner logger.
-
-## sunflower-common(common)
-
-Common tools.
-
-## sunflower-example(example)
-
-Test demo of agent application , communication, monitoring, etc.
+# Contact
