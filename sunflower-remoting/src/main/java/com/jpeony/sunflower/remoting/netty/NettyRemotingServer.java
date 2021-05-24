@@ -170,7 +170,7 @@ public class NettyRemotingServer extends AbstractNettyRemoting implements Remoti
 
         @Override
         protected void channelRead0(ChannelHandlerContext ctx, RemotingCommand msg) throws Exception {
-            System.out.println("NettyServerHandler-channelRead0");
+            System.out.println("channelRead0");
             processMessageReceived(ctx, msg);
         }
     }
@@ -180,35 +180,36 @@ public class NettyRemotingServer extends AbstractNettyRemoting implements Remoti
         @Override
         public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
             final String remoteAddress = RemotingHelper.parseChannelRemoteAddr(ctx.channel());
-            System.out.println("NETTY SERVER PIPELINE: NettyConnectManageHandler-channelRegistered " + remoteAddress);
+            System.out.println("NETTY SERVER PIPELINE: channelRegistered " + remoteAddress);
             super.channelRegistered(ctx);
         }
 
         @Override
         public void channelUnregistered(ChannelHandlerContext ctx) throws Exception {
             final String remoteAddress = RemotingHelper.parseChannelRemoteAddr(ctx.channel());
-            System.out.println("NETTY SERVER PIPELINE: NettyConnectManageHandler-channelUnregistered, the channel " + remoteAddress);
+            System.out.println("NETTY SERVER PIPELINE: channelUnregistered, the channel " + remoteAddress);
             super.channelUnregistered(ctx);
         }
 
         @Override
         public void channelActive(ChannelHandlerContext ctx) throws Exception {
             final String remoteAddress = RemotingHelper.parseChannelRemoteAddr(ctx.channel());
-            System.out.println("NETTY SERVER PIPELINE: NettyConnectManageHandler-channelActive, the channel " + remoteAddress);
+            System.out.println("NETTY SERVER PIPELINE: channelActive, the channel " + remoteAddress);
             super.channelActive(ctx);
         }
 
         @Override
         public void channelInactive(ChannelHandlerContext ctx) throws Exception {
             final String remoteAddress = RemotingHelper.parseChannelRemoteAddr(ctx.channel());
-            System.out.println("NETTY SERVER PIPELINE: NettyConnectManageHandler-channelInactive, the channel " + remoteAddress);
+            System.out.println("NETTY SERVER PIPELINE: channelInactive, the channel " + remoteAddress);
             super.channelInactive(ctx);
         }
 
         @Override
         public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
             final String remoteAddress = RemotingHelper.parseChannelRemoteAddr(ctx.channel());
-            System.out.println("NETTY SERVER PIPELINE: NettyConnectManageHandler-exceptionCaught " + remoteAddress);
+            System.out.println("NETTY SERVER PIPELINE: exceptionCaught " + remoteAddress);
+            System.out.println("NETTY SERVER PIPELINE: exceptionCaught exception " + cause);
             RemotingUtil.closeChannel(ctx.channel());
         }
     }
