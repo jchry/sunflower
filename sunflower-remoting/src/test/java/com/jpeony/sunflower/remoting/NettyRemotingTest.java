@@ -13,11 +13,16 @@ import org.junit.Test;
 
 import java.util.concurrent.Executors;
 
+/**
+ * netty 通信测试
+ *
+ * @author yihonglei
+ */
 public class NettyRemotingTest {
     private static RemotingServer remotingServer;
     private static RemotingClient remotingClient;
 
-    public static RemotingServer createRemotingServer() {
+    private static RemotingServer createRemotingServer() {
         NettyServerConfig config = new NettyServerConfig();
         RemotingServer remotingServer = new NettyRemotingServer(config);
         remotingServer.registerProcessor(0, new NettyRequestProcessor() {
@@ -38,12 +43,12 @@ public class NettyRemotingTest {
         return remotingServer;
     }
 
-    public static RemotingClient createRemotingClient() {
+    private static RemotingClient createRemotingClient() {
         NettyClientConfig config = new NettyClientConfig();
         return createRemotingClient(config);
     }
 
-    public static RemotingClient createRemotingClient(NettyClientConfig nettyClientConfig) {
+    private static RemotingClient createRemotingClient(NettyClientConfig nettyClientConfig) {
         RemotingClient client = new NettyRemotingClient(nettyClientConfig);
         client.start();
         return client;
@@ -66,7 +71,7 @@ public class NettyRemotingTest {
             RemotingTimeoutException, RemotingTooMuchRequestException, RemotingSendRequestException {
         RemotingCommand request = RemotingCommand.createRequestCommand(0);
         request.setRemark("message");
-        remotingClient.invokeOneway("localhost:9999", request, 1000 * 3);
+        remotingClient.invokeOneway("localhost:8888", request, 1000 * 3);
         Thread.sleep(300000);
     }
 }

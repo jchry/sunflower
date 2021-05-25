@@ -12,7 +12,7 @@ public abstract class AbstractProcessor {
         try {
             MQProducer mqProducer = MQProducer.getInstance();
 
-            mqProducer.send("localhost:9999", request, mqProducer.getSendMsgTimeout());
+            mqProducer.send("localhost:8888", request, mqProducer.getSendMsgTimeout());
         } catch (Exception e) {
             System.out.println("......");
         }

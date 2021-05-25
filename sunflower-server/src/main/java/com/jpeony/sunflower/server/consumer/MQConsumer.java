@@ -53,7 +53,7 @@ public class MQConsumer {
         this.remotingServer.registerProcessor(RequestCode.SEND_ERROR_MESSAGE, new ErrorProcessor(), this.remotingExecutor);
         this.remotingServer.registerProcessor(RequestCode.SEND_JVM_MESSAGE, new JVMProcessor(), this.remotingExecutor);
         this.remotingServer.registerProcessor(RequestCode.SEND_HTTP_MESSAGE, new HttpProcessor(), this.remotingExecutor);
-        this.remotingServer.registerProcessor(RequestCode.SEND_MYSQL_MESSAGE, new MySqlProcessor(), this.remotingExecutor);
+        this.remotingServer.registerProcessor(RequestCode.SEND_MYSQL_MESSAGE, new MySQLProcessor(), this.remotingExecutor);
         this.remotingServer.registerProcessor(RequestCode.SEND_REDIS_MESSAGE, new RedisProcessor(), this.remotingExecutor);
         this.remotingServer.registerProcessor(RequestCode.SEND_MONGODB_MESSAGE, new MongodbProcessor(), this.remotingExecutor);
         this.remotingServer.registerProcessor(RequestCode.SEND_ES_MESSAGE, new ESProcessor(), this.remotingExecutor);

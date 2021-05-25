@@ -7,7 +7,7 @@ import io.netty.channel.ChannelHandlerContext;
 /**
  * @author yihonglei
  */
-public class MySqlProcessor implements NettyRequestProcessor {
+public class MySQLProcessor implements NettyRequestProcessor {
     @Override
     public void processRequest(ChannelHandlerContext ctx, RemotingCommand request) throws Exception {
         System.out.println("MySql......");

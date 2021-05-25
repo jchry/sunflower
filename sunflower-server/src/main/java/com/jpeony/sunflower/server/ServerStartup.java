@@ -41,10 +41,7 @@ public class ServerStartup implements WebMvcConfigurer, CommandLineRunner {
                 consumer.shutdown();
             }
         }));
-
-        /*
-         *  Launch the consumer instance.
-         */
+        
         consumer.start();
     }
 
